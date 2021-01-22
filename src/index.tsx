@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-const Quacker = () => (
-  <h1>Quack!</h1>
-);
+import Quacker from "./Quacker"
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

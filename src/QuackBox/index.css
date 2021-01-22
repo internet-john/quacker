@@ -1,0 +1,12 @@
+.quackBox__btnGroup {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.quackBox__tweetBtn {
+    padding: 10px 50px;
+    border-radius: 25px;
+    background-color: #ffff00;
+}

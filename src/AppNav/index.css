@@ -1,0 +1,45 @@
+.AppNav,
+.AppNav__list {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.AppNav__list,
+.AppNav__content {
+  position: fixed;
+}
+
+.AppNav__list {
+  list-style-type: none;
+  line-height: 200%;
+}
+
+.AppNav__list button {
+  padding: 10px 50px;
+  border-radius: 25px;
+  background-color: #ffff00;
+}
+
+.AppNav__content {
+  list-style-type: none;
+  font-weight: 600;
+  padding: 10px;
+  background-color: #202020;
+  border-radius: 25px;
+}
+
+.AppNav__content header {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.AppNav__content li {
+  border-bottom: 0.1px solid #eceef1;
+  padding: 10px 2px;
+}
+
+.global__search {
+  margin-top: 20%;
+  padding: 5%;
+  border-radius: 25px;
+}

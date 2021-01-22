@@ -1,0 +1,8 @@
+.feed__listings {
+  list-style-type: none;
+  padding: 0;
+}
+
+.feed__listings li {
+  margin: 10px 0;
+}
