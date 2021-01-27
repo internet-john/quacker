@@ -1,5 +1,5 @@
 interface StoreState {
-  quacks: Array<Object>;
+  quacks: Array<Record<string, unknown>>;
   isFetching: boolean;
   quacksFetched: boolean;
   quacksDisplayed: boolean;

@@ -1,9 +1,11 @@
-enum ACTION_TYPES {
-  REQUEST_QUACKS = "REQUEST_QUACKS",
-  REQUEST_QUACKS_SUCCESS = "REQUEST_QUACKS_SUCCESS",
-  REQUEST_QUACKS_FAILURE = "REQUEST_QUACKS_FAILURE",
-  DISPLAY_QUACKS = "DISPLAY_QUACKS",
-}
+import getUserTimeline from "../utils/fetch";
+import {
+  ACTION_TYPES,
+  StatelessActionType,
+  StatefulActionType,
+  DispatchType,
+  QuackDataType,
+} from "./types";
 
 const requestQuacks = () => ({
   type: ACTION_TYPES.REQUEST_QUACKS,
@@ -18,11 +20,24 @@ const requestQuacksFailure = (error: string) => ({
   error,
 });
 
-const displayQuacks = (quacks: Array<Object>) => ({
+const displayQuacks = (quacks: QuackDataType) => ({
   type: ACTION_TYPES.DISPLAY_QUACKS,
-  quacks,
+  data: quacks,
 });
 
-const fetchQuacks = () => {};
+const fetchQuacks = () => {
+  return (dispatch: DispatchType) => {
+    setTimeout(async () => {
+      dispatch(requestQuacks());
+      const quacksData = await getUserTimeline();
+      if (quacksData) {
+        dispatch(requestQuacksSuccess());
+        dispatch(displayQuacks(quacksData));
+      } else {
+        dispatch(requestQuacksFailure("Fetch failed."));
+      }
+    }, 500);
+  };
+};
 
-export { ACTION_TYPES, displayQuacks, fetchQuacks };
+export default fetchQuacks;
