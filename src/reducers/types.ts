@@ -1,5 +1,7 @@
+import { QuackDataType } from "../types";
+
 interface StoreState {
-  quacks: Array<Record<string, unknown>>;
+  quacks: QuackDataType;
   isFetching: boolean;
   quacksFetched: boolean;
   quacksDisplayed: boolean;

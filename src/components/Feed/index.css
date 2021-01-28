@@ -1,6 +1,7 @@
 .feed__listings {
   list-style-type: none;
-  padding: 0;
+  padding: 0 2%;
+  overflow-y: scroll;
 }
 
 .feed__listings li {

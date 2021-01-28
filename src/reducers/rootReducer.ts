@@ -12,7 +12,10 @@ const initialState: StoreState = {
   quacksDisplayed: false,
 };
 
-const rootReducer = (state = initialState, action: StatefulActionType) => {
+const rootReducer = (
+  state: StoreState = initialState,
+  action: StatefulActionType
+): StoreState => {
   switch (action.type) {
     case ACTION_TYPES.REQUEST_QUACKS:
       return { ...state, isFetching: true };

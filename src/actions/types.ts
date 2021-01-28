@@ -1,3 +1,5 @@
+import { QuackDataType } from "../types";
+
 enum ACTION_TYPES {
   REQUEST_QUACKS = "REQUEST_QUACKS",
   REQUEST_QUACKS_SUCCESS = "REQUEST_QUACKS_SUCCESS",
@@ -11,28 +13,13 @@ type StatelessActionType = {
 
 type StatefulActionType = {
   type: string;
-  data: string | Record<string, unknown> | Array<QuackDataType>;
+  data: string | Record<string, unknown> | QuackDataType;
 };
 
 type DispatchType = (
   args: StatelessActionType | StatefulActionType
 ) => StatelessActionType | StatefulActionType;
 
-type QuackDataType = {
-  data: { id: string; text: string }[];
-  meta: {
-    oldest_id: string;
-    newest_id: string;
-    result_count: number;
-    next_token: string;
-  };
-};
-
 export { ACTION_TYPES };
 
-export type {
-  StatelessActionType,
-  StatefulActionType,
-  DispatchType,
-  QuackDataType,
-};
+export type { StatelessActionType, StatefulActionType, DispatchType };

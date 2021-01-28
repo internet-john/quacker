@@ -1,5 +1,4 @@
 .quacker {
   display: grid;
-  grid-template-rows: 1fr 10fr 2fr;
   padding: 2%;
 }
