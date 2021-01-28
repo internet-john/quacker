@@ -1,0 +1,12 @@
+.header {
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  height: min-content;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  color: #eeee00;
+}
