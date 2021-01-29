@@ -1,7 +1,8 @@
 import { QuackDataType } from "../types";
 
 interface StoreState {
-  quacks: QuackDataType;
+  isOptionsDrawerVisible: boolean;
+  quacks: QuackDataType | [];
   isFetching: boolean;
   quacksFetched: boolean;
   quacksDisplayed: boolean;

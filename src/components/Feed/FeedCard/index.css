@@ -1,4 +1,59 @@
 .quackcard {
   border-bottom: 1px solid gray;
-  padding-bottom: 10px;
+  padding: 5px 10px 10px 10px;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+}
+
+.card__content {
+  padding: 0 5px 10px 5px;
+}
+
+.quackcard__author {
+  display: flex;
+  padding-bottom: 2px;
+}
+
+.author__avatar {
+  height: 50px;
+  width: 50px;
+}
+
+.author__displayName {
+  color: #fff;
+  margin-right: 5px;
+}
+
+.author__username,
+.quackcard__metrics,
+.btn--options {
+  color: gray;
+}
+
+.quackcard__text {
+  max-width: 65vw;
+  font-size: 1rem;
+}
+
+.quackcard__metrics {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0 0 -10px -20px;
+}
+
+.quack__comment,
+.quack__requack,
+.quack__like {
+  display: flex;
+}
+
+.metric--count {
+  margin-left: 5px;
+}
+
+.btn--options {
+  justify-self: end;
 }

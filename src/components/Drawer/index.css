@@ -1,0 +1,30 @@
+.drawer {
+  position: absolute;
+  bottom: 0;
+  height: fit-content;
+  background-color: #000;
+  width: 100vw;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.drawer__options {
+  list-style-type: none;
+  padding: 0;
+}
+
+.drawer__options li {
+  padding: 15px 5px;
+  font-weight: 500;
+}
+
+.button--cancel {
+  width: 90vw;
+  font-weight: 500;
+  background-color: #202020;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  font-weight: 800;
+  border-radius: 25px;
+}

@@ -5,8 +5,23 @@
   overflow-x: scroll;
   pointer-events: pan-x;
   touch-action: pan-x;
+  margin-bottom: 0;
+  gap: 5px;
 }
 
 .storycarousel li {
-  font-size: 72px;
+  border-radius: 25px;
+}
+
+.storycarousel li svg {
+  height: 36px;
+  width: 36px;
+}
+
+.storypost--viewed {
+  border: 1px solid gray;
+}
+
+.storypost--new {
+  border: 2px solid yellow;
 }

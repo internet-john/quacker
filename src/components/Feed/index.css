@@ -2,8 +2,10 @@
   list-style-type: none;
   padding: 0 2%;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .feed__listings li {
   margin: 10px 0;
+  padding: 0;
 }
