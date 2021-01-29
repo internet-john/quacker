@@ -16,10 +16,19 @@ type StatefulActionType = {
   data: string | Record<string, unknown> | QuackDataType;
 };
 
-type DispatchType = (
-  args: StatelessActionType | StatefulActionType
-) => StatelessActionType | StatefulActionType;
+interface ActionType {
+  type: string;
+  error?: string;
+  data?: QuackDataType;
+}
+
+type DispatchType = (args: ActionType) => ActionType;
 
 export { ACTION_TYPES };
 
-export type { StatelessActionType, StatefulActionType, DispatchType };
+export type {
+  StatelessActionType,
+  StatefulActionType,
+  ActionType,
+  DispatchType,
+};

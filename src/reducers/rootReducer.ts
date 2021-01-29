@@ -3,6 +3,7 @@ import {
   ACTION_TYPES,
   StatelessActionType,
   StatefulActionType,
+  ActionType,
 } from "../actions/types";
 
 const initialState: StoreState = {
@@ -14,7 +15,7 @@ const initialState: StoreState = {
 
 const rootReducer = (
   state: StoreState = initialState,
-  action: StatefulActionType
+  action: ActionType
 ): StoreState => {
   switch (action.type) {
     case ACTION_TYPES.REQUEST_QUACKS:

@@ -4,8 +4,9 @@ import {
   StatelessActionType,
   StatefulActionType,
   DispatchType,
-  QuackDataType,
 } from "./types";
+
+import { QuackDataType } from "../types";
 
 const requestQuacks = () => ({
   type: ACTION_TYPES.REQUEST_QUACKS,
