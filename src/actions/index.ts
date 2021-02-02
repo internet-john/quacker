@@ -6,6 +6,10 @@ const toggleOptionsDrawer = () => ({
   type: ACTION_TYPES.TOGGLE_OPTIONS_DRAWER,
 });
 
+const toggleAppNav = () => ({
+  type: ACTION_TYPES.TOGGLE_APP_NAV,
+});
+
 const requestQuacks = () => ({
   type: ACTION_TYPES.REQUEST_QUACKS,
 });
@@ -39,4 +43,4 @@ const fetchQuacks = () => {
   };
 };
 
-export { toggleOptionsDrawer, fetchQuacks };
+export { toggleOptionsDrawer, toggleAppNav, fetchQuacks };

@@ -1,45 +1,88 @@
-.AppNav,
-.AppNav__list {
-  font-weight: 600;
-  font-size: 1.5rem;
+.appnav {
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  width: 80vw;
+  background-color: #000;
 }
 
-.AppNav__list,
-.AppNav__content {
-  position: fixed;
+.appnav__content {
+  color: #fff;
+  padding: 20px;
 }
 
-.AppNav__list {
-  list-style-type: none;
-  line-height: 200%;
+.user__block {
+  display: grid;
+  margin-bottom: 10px;
 }
 
-.AppNav__list button {
-  padding: 10px 50px;
+.user__username {
+  grid-row-start: 3;
+  grid-column-start: 1;
+}
+
+.profile__avatar {
+  height: 50px;
+  width: 50px;
   border-radius: 25px;
-  background-color: #ffff00;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  margin-bottom: 10px;
 }
 
-.AppNav__content {
-  list-style-type: none;
-  font-weight: 600;
-  padding: 10px;
-  background-color: #202020;
-  border-radius: 25px;
+.button--closenav {
+  height: 30px;
+  width: 30px;
+  grid-row-start: 1;
+  grid-column-start: 2;
+  justify-self: end;
+  margin: 5px 10px;
+  color: #eeee00;
 }
 
-.AppNav__content header {
-  font-size: 1.2rem;
+.user__username,
+.link svg,
+.appnav__content hr {
+  color: #808080;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.user__metrics {
+  display: flex;
+  gap: 10px;
+}
+
+.metric--following,
+.metric--followers {
+  display: flex;
+  gap: 5px;
+}
+
+.metric--following__count,
+.metric--follower__count {
   font-weight: 800;
 }
 
-.AppNav__content li {
-  border-bottom: 0.1px solid #eceef1;
-  padding: 10px 2px;
+.nav__links {
+  list-style-type: none;
+  padding: 0;
 }
 
-.global__search {
-  margin-top: 20%;
-  padding: 5%;
-  border-radius: 25px;
+.link {
+  display: flex;
+}
+
+.link svg {
+  margin-right: 0.5rem;
+}
+
+.nav__links li,
+.settings,
+.help {
+  font-size: 18px;
+  padding: 10px 0;
 }
