@@ -1,7 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { QuackDataType } from "../../actions/types";
 import StoreState from "../../reducers/types";
 import FeedCard from "./FeedCard";
+
+interface Quack {
+  id: string;
+  text: string;
+}
+
+type QuacksArrayType = unknown | Quack[];
 
 const Feed = () => {
   const selectQuacksData = (state: StoreState) => state.quacks[0];
