@@ -45,7 +45,7 @@ type FeedCardProps = {
 };
 
 const randomizeAvatar = (id: string) => {
-  let lastIdNum: string = id.slice(-1);
+  const lastIdNum: string = id.slice(-1);
   let avatar;
   switch (lastIdNum) {
     case "0":

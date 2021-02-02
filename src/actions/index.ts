@@ -1,6 +1,5 @@
 import getUserTimeline from "../utils/fetch";
 import { ACTION_TYPES, DispatchType } from "./types";
-
 import { QuackDataType } from "../types";
 
 const toggleOptionsDrawer = () => ({
