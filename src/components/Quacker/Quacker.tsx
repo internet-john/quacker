@@ -3,6 +3,7 @@ import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 
 import Header from "../Header";
+import AppNav from "../AppNav";
 import Feed from "../Feed";
 import NavFooter from "../NavFooter";
 import "./index.css";
@@ -16,7 +17,10 @@ const Quacker = () => {
 
   return (
     <div className="quacker">
-      <Header />
+      <>
+        <Header />
+        <AppNav />
+      </>
       <Feed />
       <NavFooter />
     </div>

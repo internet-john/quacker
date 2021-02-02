@@ -3,6 +3,7 @@ import { ACTION_TYPES, ActionType } from "../actions/types";
 
 const initialState: StoreState = {
   isOptionsDrawerVisible: false,
+  isAppNavVisible: false,
   quacks: [],
   isFetching: false,
   quacksFetched: false,
@@ -18,6 +19,11 @@ const rootReducer = (
       return {
         ...state,
         isOptionsDrawerVisible: !state.isOptionsDrawerVisible,
+      };
+    case ACTION_TYPES.TOGGLE_APP_NAV:
+      return {
+        ...state,
+        isAppNavVisible: !state.isAppNavVisible,
       };
     case ACTION_TYPES.REQUEST_QUACKS:
       return { ...state, isFetching: !state.isFetching };
