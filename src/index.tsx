@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, Store } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -8,16 +8,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
 import Quacker from "./components/Quacker";
 import "./index.css";
+import StoreState from "./reducers/types";
+import { DispatchType, ActionType } from "./actions/types";
 
 const composeEnhancers = composeWithDevTools({
   trace: true,
   traceLimit: 25,
 });
 
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+const store: Store<StoreState, ActionType> & {
+  dispatch: DispatchType;
+} = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>

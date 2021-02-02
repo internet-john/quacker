@@ -7,12 +7,11 @@ import Feed from "../Feed";
 import NavFooter from "../NavFooter";
 import "./index.css";
 
-import fetchQuacks from "../../actions";
+import { fetchQuacks } from "../../actions";
 
 const Quacker = () => {
   const dispatch: Dispatch<any> = useDispatch();
 
-  // figure out why ish dispatches twice
   dispatch(fetchQuacks());
 
   return (
