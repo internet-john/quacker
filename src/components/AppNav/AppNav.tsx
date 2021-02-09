@@ -1,18 +1,21 @@
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from 'react-router-dom';
+import React, { useRef, useEffect } from "react";
+import { Dispatch } from "redux";
+import { useDispatch } from "react-redux";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IoIosClose } from "react-icons/io";
+
+import Avatar from "../../assets/profile__avatar.png";
+import StoreState from "../../reducers/types";
+import { toggleAppNav } from "../../actions";
 
 type NavProps = {
-    navType: string
-}
+  navType: string;
+};
 
 type RouteObject = {
-    path: string,
-}
+  path: string;
+};
 
 /*
     TODO:
@@ -28,78 +31,118 @@ type RouteObject = {
 **/
 
 const routes: Array<RouteObject> = [
-    {
-        path: "/",
-    },
-    {
-        path: "/explore",
-
-    },
-    {
-        path: "/notifications",
-    },
-    {
-        path: "/messages",
-    },
-    {
-        path: "/bookmarks",
-    },
-    {
-        path: "/lists",
-    },
-    {
-        path: "/profile",
-    },
-    {
-        path: "/more",
-    },
+  {
+    path: "/",
+  },
+  {
+    path: "/explore",
+  },
+  {
+    path: "/notifications",
+  },
+  {
+    path: "/messages",
+  },
+  {
+    path: "/bookmarks",
+  },
+  {
+    path: "/lists",
+  },
+  {
+    path: "/profile",
+  },
+  {
+    path: "/more",
+  },
 ];
-const leftNav = <aside><ul className="AppNav__list">
-    <Router>
-        <li><Link to="/">🦆</Link></li>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/explore">Explore</Link></li>
-        <li><Link to="/notifications">Notifications</Link></li>
-        <li><Link to="/message">Message</Link></li>
-        <li><Link to="/bookmarks">Bookmarks</Link></li>
-        <li><Link to="/lists">Lists</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
-        <li><Link to="/more">More</Link></li>
-        <Switch>
+
+const AppNav = () => {
+  const dispatch: Dispatch<any> = useDispatch();
+  const selectIsAppNavVisible = (state: StoreState) => state.isAppNavVisible;
+  // const selectDrawerOriginContext = (state: StoreState) => state.drawerOriginContext;
+  const isAppNavVisible = useSelector(selectIsAppNavVisible);
+
+  /**
+   *
+   * TODO:
+   *  Target state is to close nav on click outside of nav element.
+   *  Once complete, bring back button accounts
+   *
+   */
+  const handleClickCloseNav: (evt: Event) => void = function (evt: Event) {
+    evt.preventDefault();
+    dispatch(toggleAppNav());
+  };
+
+  return isAppNavVisible ? (
+    <aside className="appnav">
+      <nav className="appnav__content">
+        <Router>
+          <div className="user">
+            <Link className="user__block" to="/profile">
+              <>
+                <img
+                  src={Avatar}
+                  alt="profile__avatar"
+                  className="profile__avatar"
+                />
+                {/* <div className="button--accounts" /> */}
+                <IoIosClose
+                  className="button--closenav"
+                  onClick={handleClickCloseNav}
+                />
+              </>
+              <div className="user__name">spongebob</div>
+              <div className="user__username">@krabbypaddydaddy</div>
+            </Link>
+            <div className="user__metrics">
+              <Link to="/following">
+                <div className="metric--following">
+                  <div className="metric--following__count">196</div> Following
+                </div>
+              </Link>
+              <Link to="/followers">
+                <div className="metric--followers">
+                  <div className="metric--follower__count">29831</div>91
+                  Followers
+                </div>
+              </Link>
+            </div>
+          </div>
+          <ul className="nav__links">
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link to="/lists">Lists</Link>
+            </li>
+            <li>
+              <Link to="/topics">Topics</Link>
+            </li>
+            <li>
+              <Link to="/bookmarks">Bookmarks</Link>
+            </li>
+            <li>
+              <Link to="/moments">Moments</Link>
+            </li>
+          </ul>
+          <hr />
+          <div className="settings">
+            <Link to="/settings">Settings and privacy</Link>
+          </div>
+          <div className="help">
+            <Link to="/help">Help Center</Link>
+          </div>
+          <Switch>
             {routes.map((route, index: number) => (
-                <Route
-                    key={index}
-                    path={route.path}
-                    exact={true} 
-                    />
+              <Route key={index} path={route.path} exact={true} />
             ))}
-
-        </Switch>
-    </Router>
-    <button>Quack</button>
-</ul></aside>
-
-const rightNav = <aside>
-    <input type="search" className="global__search" placeholder="Search quacker" />
-
-    <ul className="appNav__content">
-        <header>What&apos;s happening</header>
-        <li>Trending story</li>
-        <li>Trending story</li>
-        <li>Trending story</li>
-        <li>Trending story</li>
-        <li>Trending story</li>
-        <button>Show more</button>
-    </ul>
-    <ul className="appNav__content">
-        <header>Who to follow</header>
-        <li>Account 1 <button>Follow</button></li>
-        <li>Account 2 <button>Follow</button></li>
-        <li>Account 3<button>Follow</button> </li>
-        <button>Show more</button>
-    </ul>
-</aside>
-
-const AppNav = ({ navType }: NavProps) => navType === 'routes' ? leftNav : rightNav
+          </Switch>
+        </Router>
+      </nav>
+    </aside>
+  ) : null;
+};
 
 export default AppNav;

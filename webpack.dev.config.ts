@@ -1,7 +1,7 @@
 import path from "path";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 
 const config: webpack.Configuration = {
@@ -25,8 +25,12 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      }
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: ["file-loader"],
+      },
     ],
   },
   resolve: {
@@ -38,7 +42,7 @@ const config: webpack.Configuration = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
-      async: false
+      async: false,
     }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
@@ -48,9 +52,9 @@ const config: webpack.Configuration = {
   devServer: {
     contentBase: path.join(__dirname, "build"),
     historyApiFallback: true,
-    port: 4000,
+    port: 1234,
     open: true,
-    hot: true
+    hot: true,
   },
 };
 

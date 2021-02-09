@@ -1,10 +1,13 @@
 import getUserTimeline from "../utils/fetch";
 import { ACTION_TYPES, DispatchType } from "./types";
-
 import { QuackDataType } from "../types";
 
 const toggleOptionsDrawer = () => ({
   type: ACTION_TYPES.TOGGLE_OPTIONS_DRAWER,
+});
+
+const toggleAppNav = () => ({
+  type: ACTION_TYPES.TOGGLE_APP_NAV,
 });
 
 const requestQuacks = () => ({
@@ -40,4 +43,4 @@ const fetchQuacks = () => {
   };
 };
 
-export { toggleOptionsDrawer, fetchQuacks };
+export { toggleOptionsDrawer, toggleAppNav, fetchQuacks };

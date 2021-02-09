@@ -2,10 +2,7 @@
   list-style-type: none;
   padding: 0 2%;
   overflow-y: scroll;
-<<<<<<< HEAD
   overflow-x: hidden;
-=======
->>>>>>> 6fc1082023155f9117daf57f46d6507c45da8bfa
 }
 
 .feed__listings li {
