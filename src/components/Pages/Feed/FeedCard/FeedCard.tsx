@@ -17,7 +17,7 @@ import {
 } from "react-icons/gi";
 import { FiShare } from "react-icons/fi";
 
-import { toggleOptionsDrawer } from "../../../actions";
+import { toggleOptionsDrawer } from "../../../../actions";
 
 // type QuackStatsProps = {
 //     comments: number,

@@ -21,13 +21,14 @@ const mockTimeline = {
       author_id: "1321618115642322944",
     },
     {
-      conversation_id: "1355250290656747528",
-      text:
-        "For the first 12 hours of the day I am composed of 3 cups of coffee, a bottle of kombucha and my weed pen. I can’t live like this.",
-      created_at: "2021-01-29T20:23:43.000Z",
-      id: "1355250290656747528",
+      author_id: "1349149096909668363",
+      lang: "en",
+      created_at: "2021-01-21T01:57:34.000Z",
+      conversation_id: "1352072818847068163",
+      reply_settings: "everyone",
+      text: "We're back in the Paris Climate Agreement.",
       possibly_sensitive: false,
-      author_id: "259402749",
+      id: "1352072818847068163",
     },
     {
       conversation_id: "1355250286856609793",
