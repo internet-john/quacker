@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import StoreState from "../../reducers/types";
+import StoreState from "../../../reducers/types";
 import FeedCard from "./FeedCard";
 
 const Feed = () => {
@@ -12,7 +12,11 @@ const Feed = () => {
         {quacksData &&
           quacksData.data &&
           quacksData.data.map((quack, idx) => (
-            <FeedCard id={quack.id + idx} text={quack.text} />
+            <FeedCard
+              id={quack.id + idx}
+              text={quack.text}
+              authorMeta={quack.authorMeta}
+            />
           ))}
       </ul>
     </section>
