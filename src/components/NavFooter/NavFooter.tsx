@@ -1,16 +1,25 @@
 import React from "react";
-import { AiOutlineHome, AiFillHome } from "react-icons/ai";
-import { IoMdSearch, IoMdMail, IoMdMailUnread } from "react-icons/io";
-import { VscMail, VscBell, VscBellDot } from "react-icons/vsc";
+import { NavLink } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
+import { IoMdSearch } from "react-icons/io";
+import { VscMail, VscBell } from "react-icons/vsc";
 import Drawer from "../Drawer";
 
 const NavFooter = () => (
   <>
     <div className="navfooter">
-      <AiFillHome />
-      <IoMdSearch />
-      <VscBell />
-      <VscMail />
+      <NavLink exact to="/" activeStyle={{ color: "#eeee00" }}>
+        <AiFillHome />
+      </NavLink>
+      <NavLink to="/search" activeStyle={{ color: "#eeee00" }}>
+        <IoMdSearch />
+      </NavLink>
+      <NavLink to="/notifications" activeStyle={{ color: "#eeee00" }}>
+        <VscBell />
+      </NavLink>
+      <NavLink to="/messages" activeStyle={{ color: "#eeee00" }}>
+        <VscMail />
+      </NavLink>
     </div>
     <Drawer />
   </>

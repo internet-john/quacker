@@ -1,4 +1,4 @@
-import mockTimeline from "../mockData";
+import mockFeed from "../mockData";
 
 // const getUserTimeline = async () => {
 //   const userId = 846137120209190912;
@@ -24,7 +24,7 @@ import mockTimeline from "../mockData";
 //     throw new Error(`Request failed: ${err}`);
 //   }
 // };
-const getUserTimeline = async () => mockTimeline;
+const getUserTimeline = async () => mockFeed;
 
 export default getUserTimeline;
 

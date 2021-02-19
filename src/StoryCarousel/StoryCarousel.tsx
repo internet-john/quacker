@@ -1,72 +1,51 @@
 import React from "react";
-import {
-  GiDoctorFace,
-  GiDoubleFaceMask,
-  GiDwarfFace,
-  GiFaceToFace,
-  GiInvisibleFace,
-  GiMonkFace,
-  GiNunFace,
-  GiTreeFace,
-  GiWitchFace,
-} from "react-icons/gi";
-const StoryCarousel = () => (
-  <ul className="storycarousel">
-    <li className="storypost--viewed">
-      <GiDoctorFace />
-    </li>
-    <li className="storypost--viewed">
-      <GiDoubleFaceMask />
-    </li>
-    <li className="storypost--new">
-      <GiDwarfFace />
-    </li>
-    <li className="storypost--viewed">
-      <GiFaceToFace />
-    </li>
-    <li className="storypost--new">
-      <GiInvisibleFace />
-    </li>
-    <li className="storypost--new">
-      <GiMonkFace />
-    </li>
-    <li className="storypost--new">
-      <GiNunFace />
-    </li>
-    <li className="storypost--new">
-      <GiTreeFace />
-    </li>
-    <li className="storypost--new">
-      <GiWitchFace />
-    </li>
-    <li className="storypost--new">
-      <GiDoctorFace />
-    </li>
-    <li className="storypost--viewed">
-      <GiDoubleFaceMask />
-    </li>
-    <li className="storypost--viewed">
-      <GiDwarfFace />
-    </li>
-    <li className="storypost--new">
-      <GiFaceToFace />
-    </li>
-    <li className="storypost--viewed">
-      <GiInvisibleFace />
-    </li>
-    <li className="storypost--viewed">
-      <GiMonkFace />
-    </li>
-    <li className="storypost--new">
-      <GiNunFace />
-    </li>
-    <li className="storypost--viewed">
-      <GiTreeFace />
-    </li>
-    <li className="storypost--viewed">
-      <GiWitchFace />
-    </li>
-  </ul>
-);
+import { useSelector } from "react-redux";
+
+import StoreState from "../../reducers/types";
+import { AuthorMeta, QuackDataType } from "../types";
+
+const StoryCarousel = () => {
+  const selectQuacks = (state: StoreState) => state.quacks;
+  const quacks = useSelector(selectQuacks);
+
+  const avatars =
+    quacks && quacks[0] && quacks[0].data
+      ? quacks[0].data.map((quack: QuackDataType) => quack.authorMeta.avatar)
+      : [];
+
+  const renderNewPost = ({ avatar, username }: AuthorMeta) => (
+    <div className="storypost">
+      <img
+        className="storypost--new"
+        src={avatar}
+        alt="storycarousel__user--avatar"
+      />
+      {`${username.slice(1, 6)}...`}
+    </div>
+  );
+
+  const renderViewedPost = ({ avatar, username }: AuthorMeta) => (
+    <div className="storypost">
+      <img
+        className="storypost--viewed"
+        src={avatar}
+        alt="storycarousel__user--avatar"
+      />
+      {`${username.slice(1, 6)}...`}
+    </div>
+  );
+
+  return (
+    <div className="storycarousel">
+      {quacks && quacks[0] && quacks[0].data
+        ? quacks[0].data.map((quack: QuackDataType, idx: number) =>
+            idx % 3 === 0
+              ? renderNewPost(quack.authorMeta)
+              : renderViewedPost(quack.authorMeta)
+          )
+        : null}
+    </div>
+  );
+};
 
 export default StoryCarousel;

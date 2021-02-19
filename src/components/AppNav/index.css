@@ -27,19 +27,23 @@
   border-radius: 25px;
   grid-row-start: 1;
   grid-column-start: 1;
+  margin-bottom: 10px;
 }
 
 .button--closenav {
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
   grid-row-start: 1;
   grid-column-start: 2;
   justify-self: end;
   margin: 5px 10px;
+  color: #eeee00;
 }
 
-.user__username {
-  color: #505050;
+.user__username,
+.link svg,
+.appnav__content hr {
+  color: #808080;
 }
 
 a {
@@ -68,9 +72,17 @@ a {
   padding: 0;
 }
 
+.link {
+  display: flex;
+}
+
+.link svg {
+  margin-right: 0.5rem;
+}
+
 .nav__links li,
 .settings,
 .help {
-  font-size: 18px;
+  font-size: 1.1rem;
   padding: 10px 0;
 }

@@ -4,10 +4,20 @@
   font-weight: 500;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
+  width: 95vw;
 }
 
 .card__content {
   padding: 0 5px 10px 5px;
+  max-width: inherit;
+  overflow: hidden;
+}
+
+.quackcard__avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin: 5px;
 }
 
 .quackcard__author {
@@ -23,6 +33,7 @@
 .author__displayName {
   color: #fff;
   margin-right: 5px;
+  white-space: nowrap;
 }
 
 .author__username,
@@ -34,6 +45,7 @@
 .quackcard__text {
   max-width: 65vw;
   font-size: 1rem;
+  margin: 4px 0;
 }
 
 .quackcard__metrics {
@@ -41,7 +53,7 @@
   display: flex;
   justify-content: space-around;
   padding: 0;
-  margin: 0 0 -10px -20px;
+  margin: 0 0 -10px -17.5px;
 }
 
 .quack__comment,
@@ -55,5 +67,5 @@
 }
 
 .btn--options {
-  justify-self: end;
+  justify-self: center;
 }

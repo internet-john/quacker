@@ -1,4 +1,6 @@
 import getUserTimeline from "../utils/fetch";
+import { fetchAuthorMeta } from "../utils/fetchAuthorMeta";
+
 import { ACTION_TYPES, DispatchType } from "./types";
 import { QuackDataType } from "../types";
 
@@ -33,6 +35,15 @@ const fetchQuacks = () => {
     setTimeout(async () => {
       dispatch(requestQuacks());
       const quacksData = await getUserTimeline();
+      const authorMeta = await fetchAuthorMeta();
+
+      authorMeta.map((authorData, idx) => {
+        quacksData.data[idx] = {
+          ...quacksData.data[idx],
+          authorMeta: authorData,
+        };
+      });
+
       if (quacksData) {
         dispatch(requestQuacksSuccess());
         dispatch(displayQuacks(quacksData));

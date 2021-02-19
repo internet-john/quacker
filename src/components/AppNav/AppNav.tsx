@@ -1,9 +1,19 @@
 import React, { useRef, useEffect } from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoIosClose } from "react-icons/io";
+import { BsPerson, BsLightning, BsLightningFill } from "react-icons/bs";
+import { CgNotes } from "react-icons/cg";
+import { MdBookmarkBorder } from "react-icons/md";
+import { HiOutlineChat } from "react-icons/hi";
 
 import Avatar from "../../assets/profile__avatar.png";
 import StoreState from "../../reducers/types";
@@ -16,46 +26,6 @@ type NavProps = {
 type RouteObject = {
   path: string;
 };
-
-/*
-    TODO:
-
-    Add component views to route objects below.
-
-    main property replaces feed view on home 
-
-    e.g. clicking notifications replaces feed and shows list of notification cards. 
-        (likes, follows, rt's etc)
-
-    Dispatch route to store. Read route in Feed component and render accordingly
-**/
-
-const routes: Array<RouteObject> = [
-  {
-    path: "/",
-  },
-  {
-    path: "/explore",
-  },
-  {
-    path: "/notifications",
-  },
-  {
-    path: "/messages",
-  },
-  {
-    path: "/bookmarks",
-  },
-  {
-    path: "/lists",
-  },
-  {
-    path: "/profile",
-  },
-  {
-    path: "/more",
-  },
-];
 
 const AppNav = () => {
   const dispatch: Dispatch<any> = useDispatch();
@@ -78,68 +48,76 @@ const AppNav = () => {
   return isAppNavVisible ? (
     <aside className="appnav">
       <nav className="appnav__content">
-        <Router>
-          <div className="user">
-            <Link className="user__block" to="/profile">
-              <>
-                <img
-                  src={Avatar}
-                  alt="profile__avatar"
-                  className="profile__avatar"
-                />
-                {/* <div className="button--accounts" /> */}
-                <IoIosClose
-                  className="button--closenav"
-                  onClick={handleClickCloseNav}
-                />
-              </>
-              <div className="user__name">spongebob</div>
-              <div className="user__username">@krabbypaddydaddy</div>
+        <div className="user">
+          <Link className="user__block" to="/profile">
+            <>
+              <img
+                src={Avatar}
+                alt="profile__avatar"
+                className="profile__avatar"
+              />
+              {/* <div className="button--accounts" /> */}
+              <IoIosClose
+                className="button--closenav"
+                onClick={handleClickCloseNav}
+              />
+            </>
+            <div className="user__name">spongebob</div>
+            <div className="user__username">@krabbypaddydaddy</div>
+          </Link>
+          <div className="user__metrics">
+            <Link to="/following">
+              <div className="metric--following" onClick={handleClickCloseNav}>
+                <div className="metric--following__count">196</div> Following
+              </div>
             </Link>
-            <div className="user__metrics">
-              <Link to="/following">
-                <div className="metric--following">
-                  <div className="metric--following__count">196</div> Following
-                </div>
-              </Link>
-              <Link to="/followers">
-                <div className="metric--followers">
-                  <div className="metric--follower__count">29831</div>91
-                  Followers
-                </div>
-              </Link>
-            </div>
+            <Link to="/followers">
+              <div className="metric--followers" onClick={handleClickCloseNav}>
+                <div className="metric--follower__count">29831</div>
+                Followers
+              </div>
+            </Link>
           </div>
-          <ul className="nav__links">
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/lists">Lists</Link>
-            </li>
-            <li>
-              <Link to="/topics">Topics</Link>
-            </li>
-            <li>
-              <Link to="/bookmarks">Bookmarks</Link>
-            </li>
-            <li>
-              <Link to="/moments">Moments</Link>
-            </li>
-          </ul>
-          <hr />
-          <div className="settings">
-            <Link to="/settings">Settings and privacy</Link>
-          </div>
-          <div className="help">
-            <Link to="/help">Help Center</Link>
-          </div>
-          <Switch>
-            {routes.map((route, index: number) => (
-              <Route key={index} path={route.path} exact={true} />
-            ))}
-          </Switch>
-        </Router>
+        </div>
+        <ul className="nav__links">
+          <li className="link" onClick={handleClickCloseNav}>
+            <Link to="/profile">
+              <BsPerson />
+              Profile
+            </Link>
+          </li>
+          <li className="link" onClick={handleClickCloseNav}>
+            <Link to="/lists">
+              <CgNotes />
+              Lists
+            </Link>
+          </li>
+          <li className="link" onClick={handleClickCloseNav}>
+            <Link to="/topics">
+              <HiOutlineChat />
+              Topics
+            </Link>
+          </li>
+          <li className="link" onClick={handleClickCloseNav}>
+            <Link to="/bookmarks">
+              <MdBookmarkBorder />
+              Bookmarks
+            </Link>
+          </li>
+          <li className="link" onClick={handleClickCloseNav}>
+            <Link to="/moments">
+              <BsLightning />
+              Moments
+            </Link>
+          </li>
+        </ul>
+        <hr />
+        <div className="settings" onClick={handleClickCloseNav}>
+          <Link to="/settings">Settings and privacy</Link>
+        </div>
+        <div className="help" onClick={handleClickCloseNav}>
+          <Link to="/help">Help Center</Link>
+        </div>
       </nav>
     </aside>
   ) : null;

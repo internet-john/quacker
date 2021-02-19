@@ -1,0 +1,23 @@
+.search__pg {
+  display: grid;
+}
+
+.search__categories {
+  overflow-x: scroll;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 10px;
+  pointer-events: pan-x;
+  touch-action: pan-x;
+}
+
+.search__categories a {
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.trending {
+  margin: 0;
+  border: 0.5px solid #202020;
+}

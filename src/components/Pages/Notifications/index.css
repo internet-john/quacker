@@ -1,0 +1,15 @@
+.notifications__pg {
+  display: grid;
+}
+
+.notifications__categories {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px 0 5px 0;
+}
+
+.notifications {
+  margin: 0;
+  border: 0.5px solid #202020;
+}
