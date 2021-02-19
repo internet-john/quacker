@@ -1,5 +1,5 @@
 import React from "react";
 
-const Profile = () => <h1>Profile</h1>;
+const Profile = () => <div className="profile__pg"></div>;
 
 export default Profile;

@@ -1,5 +1,5 @@
 import React from "react";
 
-const Bookmarks = () => <h1>bookmarks</h1>;
+const Bookmarks = () => <div className="bookmarks__pg"></div>;
 
 export default Bookmarks;

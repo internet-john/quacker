@@ -1,5 +1,5 @@
 import React from "react";
 
-const Moments = () => <h1>Moments</h1>;
+const Moments = () => <div className="moments__pg"></div>;
 
 export default Moments;
