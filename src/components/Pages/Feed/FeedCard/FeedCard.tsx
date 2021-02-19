@@ -18,59 +18,12 @@ import {
 import { FiShare } from "react-icons/fi";
 
 import { toggleOptionsDrawer } from "../../../../actions";
+import { AuthorMeta } from "../../../../types";
 
-// type QuackStatsProps = {
-//     comments: number,
-//     requacks: number,
-//     likes: number
-// }
-
-// type AuthorMetaProps = {
-//     avatar: string,
-//     displayName: string,
-//     userName: string,
-//     timestamp: string,
-//     quack: string,
-//     quackStats: QuackStatsProps,
-//     likedByFollowed: string[]
-// }
-
-// type FeedCardProps = {
-//     authorMeta: AuthorMetaProps,
-//     quackStats: QuackStatsProps
-// }
 type FeedCardProps = {
   id: string;
   text: string;
-};
-
-const randomizeAvatar = (id: string) => {
-  const lastIdNum: string = id.slice(-1);
-  let avatar;
-  switch (lastIdNum) {
-    case "0":
-      return <GiDoctorFace className="author__avatar" />;
-    case "1":
-      return <GiDoubleFaceMask className="author__avatar" />;
-    case "2":
-      return <GiDwarfFace className="author__avatar" />;
-    case "3":
-      return <GiFaceToFace className="author__avatar" />;
-    case "4":
-      return <GiInvisibleFace className="author__avatar" />;
-    case "5":
-      return <GiMonkFace className="author__avatar" />;
-    case "6":
-      return <GiNunFace className="author__avatar" />;
-    case "8":
-      return <GiTreeFace className="author__avatar" />;
-    case "9":
-      return <GiWitchFace className="author__avatar" />;
-    default:
-      break;
-  }
-
-  return avatar;
+  authorMeta: AuthorMeta;
 };
 
 const FeedCard = ({ id, text, authorMeta }: FeedCardProps) => {
@@ -79,7 +32,6 @@ const FeedCard = ({ id, text, authorMeta }: FeedCardProps) => {
 
   return (
     <li className="quackcard" key={id}>
-      {/* {randomizeAvatar(id)} */}
       <img
         className="quackcard__avatar"
         src={authorMeta.avatar}
@@ -99,7 +51,7 @@ const FeedCard = ({ id, text, authorMeta }: FeedCardProps) => {
             </div>
           </li>
           <li className="quack__requack">
-            <FaRetweet />{" "}
+            <FaRetweet />
             <div className="metric--count">
               {Math.floor(Math.random() * 250) + 1}
             </div>
