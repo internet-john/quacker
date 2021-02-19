@@ -88,7 +88,6 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__nav">
-<<<<<<< HEAD
         <GiHamburgerMenu
           className="header__icon"
           onClick={handleClickToggleAppNav}
@@ -96,14 +95,6 @@ const Header = () => {
         {determineHeaderTitle(location.pathname)}
         {determineHeaderIconRight(location.pathname)}
       </div>
-      {location.pathname === "/" ? <StoryCarousel /> : null}
-=======
-        <GiHamburgerMenu onClick={handleClickToggleAppNav} />
-        <GiPlasticDuck />
-        <HiOutlineSparkles />
-      </div>
-      <StoryCarousel />
->>>>>>> 32376aadaf7227a1d93cf4832dc17e6b0990a497
     </header>
   );
 };
