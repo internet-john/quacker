@@ -27,6 +27,27 @@ type QuackData = [
 
 type EmptyQuackData = [];
 
+type NewsArticle = {
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  source: { id: number | null; name: string };
+  title: string;
+  url: string;
+  urlToImage: string;
+};
+
+type NewsData = {
+  status: string;
+  totalResults: number;
+  articles: NewsArticle[];
+};
+
+type EmptyNewsData = [];
+
 type QuackDataType = QuackData | EmptyQuackData;
 
-export type { AuthorMeta, QuackDataType };
+type NewsDataType = NewsData | EmptyNewsData;
+
+export type { AuthorMeta, QuackDataType, NewsDataType };

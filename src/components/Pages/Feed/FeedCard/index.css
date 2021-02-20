@@ -11,6 +11,7 @@
   padding: 0 5px 10px 5px;
   max-width: inherit;
   overflow: hidden;
+  text-shadow: 0px 0px 1px #fff;
 }
 
 .quackcard__avatar {
@@ -43,7 +44,6 @@
 }
 
 .quackcard__text {
-  max-width: 65vw;
   font-size: 1rem;
   margin: 4px 0;
 }

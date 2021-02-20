@@ -1,13 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoIosClose } from "react-icons/io";
 import { BsPerson, BsLightning, BsLightningFill } from "react-icons/bs";
@@ -18,14 +12,6 @@ import { HiOutlineChat } from "react-icons/hi";
 import Avatar from "../../assets/profile__avatar.png";
 import StoreState from "../../reducers/types";
 import { toggleAppNav } from "../../actions";
-
-type NavProps = {
-  navType: string;
-};
-
-type RouteObject = {
-  path: string;
-};
 
 const AppNav = () => {
   const dispatch: Dispatch<any> = useDispatch();
@@ -54,7 +40,7 @@ const AppNav = () => {
               <img
                 src={Avatar}
                 alt="profile__avatar"
-                className="profile__avatar"
+                className="appnav__avatar"
               />
               {/* <div className="button--accounts" /> */}
               <IoIosClose

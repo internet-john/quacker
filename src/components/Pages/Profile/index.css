@@ -1,0 +1,89 @@
+.profile__pg {
+  display: grid;
+}
+
+.profile__banner img {
+  width: 100%;
+}
+
+.profile__details {
+  display: grid;
+  row-gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.profile--edit {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+.profilepg__avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  margin-top: -35px;
+  border: 5px solid #000;
+  border-radius: 50px;
+  margin-bottom: 0;
+}
+
+.profile__button--edit {
+  margin-top: 5px;
+  background-color: #000;
+  border-radius: 25px;
+  border: 1px solid #eeee00;
+  color: #fff;
+}
+
+.profile__displayname {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.profile__username,
+.meta--misc,
+.tab {
+  color: #808080;
+}
+
+.profile__site svg {
+  margin: 0 2px -2px 0;
+}
+
+.meta--misc {
+  display: flex;
+  gap: 10px;
+}
+
+.meta--misc a {
+  color: #eeee00;
+}
+
+.profile__metrics {
+  display: flex;
+  gap: 10px;
+}
+
+.metric--following__count,
+.metric--follower__count {
+  font-weight: 800;
+}
+
+.profile__tabs {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab {
+  width: fit-content;
+}
+
+.tab--focused {
+  width: min-content;
+  border-bottom-color: 1px solid #eeee00;
+  color: #eeee00;
+}

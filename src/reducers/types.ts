@@ -1,12 +1,16 @@
-import { QuackDataType } from "../types";
+import { QuackDataType, NewsDataType } from "../types";
 
 interface StoreState {
   isOptionsDrawerVisible: boolean;
   isAppNavVisible: boolean;
   quacks: QuackDataType | [];
-  isFetching: boolean;
+  news: NewsDataType | [];
+  newsCategory: string;
+  isLoading: boolean;
   quacksFetched: boolean;
   quacksDisplayed: boolean;
+  newsFetched: boolean;
+  newsDisplayed: boolean;
 }
 
 export default StoreState;
