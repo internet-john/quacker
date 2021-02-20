@@ -6,7 +6,7 @@ import { GiHamburgerMenu, GiPlasticDuck } from "react-icons/gi";
 import { HiOutlineSparkles, HiDotsHorizontal } from "react-icons/hi";
 import { AiOutlineSetting } from "react-icons/ai";
 
-import StoryCarousel from "../../StoryCarousel";
+import StoryCarousel from "../StoryCarousel";
 import { toggleAppNav } from "../../actions";
 
 const determineHeaderTitle = (pathname: string) => {
@@ -85,7 +85,7 @@ const Header = () => {
   const handleClickToggleAppNav = () => dispatch(toggleAppNav());
   const location = useLocation();
 
-  return (
+  return !location.pathname.includes("/profile") ? (
     <header className="header">
       <div className="header__nav">
         <GiHamburgerMenu
@@ -95,8 +95,9 @@ const Header = () => {
         {determineHeaderTitle(location.pathname)}
         {determineHeaderIconRight(location.pathname)}
       </div>
+      {location.pathname === "/" ? <StoryCarousel /> : null}
     </header>
-  );
+  ) : null;
 };
 
 export default Header;

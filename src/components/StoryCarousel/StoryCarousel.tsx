@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import StoreState from "../../reducers/types";
-import { AuthorMeta, QuackDataType } from "../types";
+import { AuthorMeta, QuackDataType } from "../../types";
 
 const StoryCarousel = () => {
   const selectQuacks = (state: StoreState) => state.quacks;

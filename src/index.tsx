@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { createStore, applyMiddleware, Store } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -11,15 +12,26 @@ import Quacker from "./components/Quacker";
 import "./index.css";
 import StoreState from "./reducers/types";
 import { DispatchType, ActionType } from "./actions/types";
+import { fetchNews } from "./actions";
+import rootSaga from "./sagas";
 
 const composeEnhancers = composeWithDevTools({
   trace: true,
   traceLimit: 25,
 });
 
+const sagaMiddleware = createSagaMiddleware();
+
 const store: Store<StoreState, ActionType> & {
   dispatch: DispatchType;
-} = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+} = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
+);
+
+sagaMiddleware.run(rootSaga);
+
+store.dispatch(fetchNews("general"));
 
 ReactDOM.render(
   <React.StrictMode>

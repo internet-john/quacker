@@ -2,14 +2,57 @@
   display: grid;
 }
 
-.notifications__categories {
+.notifications__tabs {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 15px 0 5px 0;
+}
+
+.tab--focused,
+.tab {
+  width: 40vw;
+  text-align: center;
+}
+
+.tab--focused {
+  font-weight: 600;
+  border-bottom: 2px solid #eeee00;
 }
 
 .notifications {
   margin: 0;
   border: 0.5px solid #202020;
+}
+
+.notifications__list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notification--general,
+.notification--follow,
+.notification--reply,
+.notification--like,
+.notification--requack {
+  padding: 10px 20px;
+  border-bottom: 0.5px solid #404040;
+}
+
+.notification__content {
+  display: flex;
+  padding: 10px 25px;
+  gap: 10px;
+}
+
+.notification--general svg,
+.notification--follow svg,
+.notification--reply svg,
+.notification--requack svg {
+  color: #eeee00;
+  font-size: 1.25rem;
+}
+
+.notification--requack svg {
+  font-size: 1.5rem;
 }
