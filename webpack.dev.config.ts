@@ -1,5 +1,6 @@
 import path from "path";
-import webpack from "webpack";
+import webpack, { ModuleOptions } from "webpack";
+import Dotenv from "dotenv-webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
@@ -37,6 +38,9 @@ const config: webpack.Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
+    new Dotenv({
+      path: path.resolve(__dirname, "./src/sagas/.env"),
+    }),
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),

@@ -1,56 +1,122 @@
-import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import StoreState from "../../../reducers/types";
+import { fetchNews } from "../../../actions";
+
 const Search = () => {
-  const location = useLocation();
+  const dispatch: Dispatch<any> = useDispatch();
+  const selectNewsArticles = (state: StoreState) => state.news;
+  const selectNewsCategory = (state: StoreState) => state.newsCategory;
+  const [selectedTab, setSelectedTab] = useState("general");
+
+  const news = useSelector(selectNewsArticles);
+  const focusedTab = useSelector(selectNewsCategory);
+
+  const handleClickNewsFilter: (event: EventTarget) => EventTarget = function (
+    event: EventTarget
+  ) {
+    event.preventDefault();
+
+    setSelectedTab(event.target.id);
+    if (event.target.id !== focusedTab) dispatch(fetchNews(event.target.id));
+  };
+
+  const renderFeed = () =>
+    news.map((article, idx) => (
+      <li className={idx === 0 ? "article--featured" : "article"}>
+        <a href={article.url}>
+          {idx === 0 ? (
+            <img className="article--featured__img" src={article.urlToImage} />
+          ) : null}
+          <div className="article__content">
+            <div className="article__publish--meta">
+              <div className="publish--source">
+                {`${article.source.name} • `}
+              </div>
+              <div className="publish--timestamp">
+                {`${
+                  new Date().getHours() -
+                  new Date(article.publishedAt).getHours()
+                } hours ago`}
+              </div>
+            </div>
+            <div className="article__title">{article.title}</div>
+          </div>
+        </a>
+      </li>
+    ));
+
   return (
     <div className="search__pg">
       <nav className="search__categories">
-        <NavLink
-          className="category__btn"
-          exact
-          to="/search"
-          activeStyle={{ borderBottomColor: "#eeee00" }}
+        <div
+          id="general"
+          className={
+            focusedTab === "general"
+              ? "category__tab--focused"
+              : "category__tab"
+          }
+          onClick={handleClickNewsFilter}
         >
           For you
-        </NavLink>
-        <NavLink
-          className="category__btn"
-          to="/search/covid19"
-          activeStyle={{ borderBottomColor: "#eeee00" }}
+        </div>
+        <div
+          id="covid19"
+          className={
+            focusedTab === "covid19"
+              ? "category__tab--focused"
+              : "category__tab"
+          }
+          onClick={handleClickNewsFilter}
         >
           COVID-19
-        </NavLink>
-        <NavLink
-          className="category__btn"
-          to="/search/trending"
-          activeStyle={{ borderBottomColor: "#eeee00" }}
+        </div>
+        <div
+          id="trending"
+          className={
+            focusedTab === "trending"
+              ? "category__tab--focused"
+              : "category__tab"
+          }
+          onClick={handleClickNewsFilter}
         >
           Trending
-        </NavLink>
-        <NavLink
-          className="category__btn"
-          to="/search/news"
-          activeStyle={{ borderBottomColor: "#eeee00" }}
+        </div>
+        <div
+          id="technology"
+          className={
+            focusedTab === "technology"
+              ? "category__tab--focused"
+              : "category__tab"
+          }
+          onClick={handleClickNewsFilter}
         >
-          News
-        </NavLink>
-        <NavLink
-          className="category__btn"
-          to="/search/sports"
-          activeStyle={{ borderBottomColor: "#eeee00" }}
+          Technology
+        </div>
+        <div
+          id="sports"
+          className={
+            focusedTab === "sports" ? "category__tab--focused" : "category__tab"
+          }
+          onClick={handleClickNewsFilter}
         >
           Sports
-        </NavLink>
-        <NavLink
-          className="category__btn"
-          to="/search/entertainment"
-          activeStyle={{ borderBottomColor: "#eeee00" }}
+        </div>
+        <div
+          id="entertainment"
+          className={
+            focusedTab === "entertainment"
+              ? "category__tab--focused"
+              : "category__tab"
+          }
+          onClick={handleClickNewsFilter}
         >
           Entertainment
-        </NavLink>
+        </div>
       </nav>
-      <section className="trending">
-        <ul className="trending__list">{/*{content}*/}</ul>
+      <section className="feed">
+        <ul className="feed__content">{renderFeed()}</ul>
       </section>
     </div>
   );
