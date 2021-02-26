@@ -1,13 +1,41 @@
 import React, { useEffect } from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { GiHamburgerMenu, GiPlasticDuck } from "react-icons/gi";
 import { HiOutlineSparkles, HiDotsHorizontal } from "react-icons/hi";
 import { AiOutlineSetting } from "react-icons/ai";
+import { IoIosArrowBack } from "react-icons/io";
 
 import StoryCarousel from "../StoryCarousel";
 import { toggleAppNav } from "../../actions";
+
+const determineHeaderIconLeft = (
+  pathname: string,
+  handleClickIconLeft: Function
+) => {
+  let icon = (
+    <GiHamburgerMenu className="header__icon" onClick={handleClickIconLeft} />
+  );
+  switch (pathname) {
+    case "/profile":
+    case "/lists":
+    case "/topics":
+    case "/bookmarks":
+    case "/moments":
+    case "/settings":
+    case "/help":
+      icon = (
+        <IoIosArrowBack
+          className="header__icon"
+          onClick={handleClickIconLeft}
+        />
+      );
+      return icon;
+    default:
+      return icon;
+  }
+};
 
 const determineHeaderTitle = (pathname: string) => {
   let title;
@@ -20,7 +48,8 @@ const determineHeaderTitle = (pathname: string) => {
         <input
           className="header__search"
           type="search"
-          value="Search Quacker"
+          placeholder="Search Quacker"
+          value=""
         />
       );
       return title;
@@ -82,22 +111,46 @@ const determineHeaderIconRight = (pathname: string) => {
 };
 const Header = () => {
   const dispatch: Dispatch<any> = useDispatch();
-  const handleClickToggleAppNav = () => dispatch(toggleAppNav());
+  const history = useHistory();
   const location = useLocation();
+  const handleClickIconLeft = () => {
+    switch (location.pathname) {
+      case "/":
+      case "/search":
+      case "/notifications":
+      case "/messages":
+        handleClickToggleAppNav();
+        return;
+      case "/profile":
+      case "/lists":
+      case "/topics":
+      case "/bookmarks":
+      case "/moments":
+      case "/settings":
+      case "/help":
+        handleClickGoBack();
+        return;
+      default:
+        return;
+    }
+  };
 
-  return !location.pathname.includes("/profile") ? (
+  const handleClickToggleAppNav = () => dispatch(toggleAppNav());
+
+  const handleClickGoBack = () => history.goBack();
+
+  return (
     <header className="header">
       <div className="header__nav">
-        <GiHamburgerMenu
-          className="header__icon"
-          onClick={handleClickToggleAppNav}
-        />
-        {determineHeaderTitle(location.pathname)}
-        {determineHeaderIconRight(location.pathname)}
+        {determineHeaderIconLeft(location.pathname, handleClickIconLeft)}
+        {location.pathname !== "/profile" &&
+          determineHeaderTitle(location.pathname)}
+        {location.pathname !== "/profile" &&
+          determineHeaderIconRight(location.pathname)}
       </div>
       {location.pathname === "/" ? <StoryCarousel /> : null}
     </header>
-  ) : null;
+  );
 };
 
 export default Header;

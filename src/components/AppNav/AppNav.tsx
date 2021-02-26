@@ -48,7 +48,7 @@ const AppNav = () => {
                 onClick={handleClickCloseNav}
               />
             </>
-            <div className="user__name">spongebob</div>
+            <div className="user__displayname">spongebob</div>
             <div className="user__username">@krabbypaddydaddy</div>
           </Link>
           <div className="user__metrics">
@@ -98,11 +98,13 @@ const AppNav = () => {
           </li>
         </ul>
         <hr />
-        <div className="settings" onClick={handleClickCloseNav}>
-          <Link to="/settings">Settings and privacy</Link>
-        </div>
-        <div className="help" onClick={handleClickCloseNav}>
-          <Link to="/help">Help Center</Link>
+        <div className="misc">
+          <div className="settings" onClick={handleClickCloseNav}>
+            <Link to="/settings">Settings and privacy</Link>
+          </div>
+          <div className="help" onClick={handleClickCloseNav}>
+            <Link to="/help">Help Center</Link>
+          </div>
         </div>
       </nav>
     </aside>

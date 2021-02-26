@@ -17,9 +17,15 @@
   margin-bottom: 10px;
 }
 
+.user__displayname {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .user__username {
   grid-row-start: 3;
   grid-column-start: 1;
+  font-size: 1.1rem;
 }
 
 .appnav__avatar {
@@ -65,11 +71,13 @@ a {
 .metric--followers {
   display: flex;
   gap: 5px;
+  color: #808080;
 }
 
 .metric--following__count,
 .metric--follower__count {
   font-weight: 800;
+  color: #fff;
 }
 
 .nav__links {
@@ -82,12 +90,19 @@ a {
 }
 
 .link svg {
-  margin-right: 0.5rem;
+  margin-right: 20px;
+  font-size: 1.5rem;
 }
 
 .nav__links li,
 .settings,
 .help {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   padding: 10px 0;
+}
+
+.misc {
+  padding: 10px 0;
+  display: grid;
+  row-gap: 10px;
 }

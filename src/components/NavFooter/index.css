@@ -1,12 +1,12 @@
 .navfooter {
   position: fixed;
   bottom: 0;
-  padding: 10px 5px;
+  padding: 2% 4%;
   display: flex;
   justify-content: space-between;
   background-color: #101010;
   font-size: 1rem;
-  width: 95vw;
+  width: 92.5vw;
   font-size: 1.5rem;
   color: #eeee00;
   border-top: 1px solid #eceef1;
