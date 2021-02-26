@@ -40,7 +40,7 @@ const AppNav = () => {
               <img
                 src={Avatar}
                 alt="profile__avatar"
-                className="profile__avatar"
+                className="appnav__avatar"
               />
               {/* <div className="button--accounts" /> */}
               <IoIosClose

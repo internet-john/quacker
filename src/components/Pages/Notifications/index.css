@@ -5,8 +5,24 @@
 .notifications__tabs {
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding: 15px 0 5px 0;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.notifications__tab--focused,
+.notifications__tab {
+  width: 50vw;
+  text-align: center;
+}
+
+.notifications__tab--focused {
+  font-weight: 600;
+  border-bottom: 2px solid #eeee00;
+  margin-bottom: -10px;
+}
+
+.notifications__tab {
+  color: #808080;
 }
 
 .tab--focused,
@@ -39,13 +55,35 @@
   border-bottom: 0.5px solid #404040;
 }
 
+.notification__authorgraphic {
+  margin-bottom: 5px;
+}
+
+.notification__authorgraphic svg {
+  margin: 0 10px 15px 0;
+}
+
+.notification__author--avatar {
+  height: 36px;
+  width: 36px;
+  border-radius: 50px;
+}
+
+.notification__text {
+  margin-left: 25px;
+}
+
+.notification__content .user__displayname {
+  font-weight: 600;
+}
+
 .notification__content {
-  display: flex;
   padding: 10px 25px;
-  gap: 10px;
+  display: grid;
 }
 
 .notification--general svg,
+.notification--like svg,
 .notification--follow svg,
 .notification--reply svg,
 .notification--requack svg {
@@ -54,5 +92,5 @@
 }
 
 .notification--requack svg {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }

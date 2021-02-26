@@ -7,21 +7,28 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 10px;
+  padding: 10px 0;
   pointer-events: pan-x;
   touch-action: pan-x;
+  white-space: nowrap;
 }
 
+.category__tab,
 .category__tab--focused {
+  padding: 0 10px;
   font-weight: 600;
-  border-bottom: 2px solid #eeee00;
 }
 
 .category__tab {
   width: fit-content;
   white-space: nowrap;
-  font-weight: 600;
   color: #808080;
+}
+
+.category__tab--focused {
+  border-bottom: 2px solid #eeee00;
+  margin-bottom: -10px;
+  padding: 0 10px;
 }
 
 .feed {
@@ -32,10 +39,11 @@
 .feed__content {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .article--featured__img {
-  max-height: 150px;
+  height: clamp(fit-content, 150px, 150px);
   width: 100%;
   color: #fff;
 }

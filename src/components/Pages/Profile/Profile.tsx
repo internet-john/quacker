@@ -14,7 +14,7 @@ const Profile = () => {
       </div>
       <div className="profile__details">
         <div className="profile--edit">
-          <img className="profile__avatar" src={ProfileAvatar} />
+          <img className="profilepg__avatar" src={ProfileAvatar} />
           <button className="profile__button--edit">Edit profile</button>
         </div>
         <div className="profile__names">
@@ -41,7 +41,7 @@ const Profile = () => {
           // onClick={handleClickNotificationsTab}
         >
           Quacks
-        </div>{" "}
+        </div>
         <div
           className={focusedTab === "quacksreplies" ? "tab--focused" : "tab"}
           // onClick={handleClickNotificationsTab}
@@ -53,7 +53,7 @@ const Profile = () => {
           // onClick={handleClickNotificationsTab}
         >
           Media
-        </div>{" "}
+        </div>
         <div
           className={focusedTab === "likes" ? "tab--focused" : "tab"}
           // onClick={handleClickNotificationsTab}

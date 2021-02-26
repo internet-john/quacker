@@ -24,7 +24,11 @@ const Search = () => {
 
   const renderFeed = () =>
     news.map((article, idx) => (
-      <li className={idx === 0 ? "article--featured" : "article"}>
+      <li
+        className={
+          idx === 0 && article.urlToImage ? "article--featured" : "article"
+        }
+      >
         <a href={article.url}>
           {idx === 0 ? (
             <img className="article--featured__img" src={article.urlToImage} />
