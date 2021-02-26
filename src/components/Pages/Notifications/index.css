@@ -25,6 +25,17 @@
   color: #808080;
 }
 
+.tab--focused,
+.tab {
+  width: 40vw;
+  text-align: center;
+}
+
+.tab--focused {
+  font-weight: 600;
+  border-bottom: 2px solid #eeee00;
+}
+
 .notifications {
   margin: 0;
   border: 0.5px solid #202020;

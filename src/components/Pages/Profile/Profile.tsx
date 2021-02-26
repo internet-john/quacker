@@ -41,7 +41,7 @@ const Profile = () => {
           // onClick={handleClickNotificationsTab}
         >
           Quacks
-        </div>{" "}
+        </div>
         <div
           className={focusedTab === "quacksreplies" ? "tab--focused" : "tab"}
           // onClick={handleClickNotificationsTab}
@@ -53,7 +53,7 @@ const Profile = () => {
           // onClick={handleClickNotificationsTab}
         >
           Media
-        </div>{" "}
+        </div>
         <div
           className={focusedTab === "likes" ? "tab--focused" : "tab"}
           // onClick={handleClickNotificationsTab}
