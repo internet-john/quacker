@@ -12,3 +12,47 @@
   margin: 0;
   border: 0.5px solid #202020;
 }
+
+.messages__search {
+  padding: 2% 4%;
+}
+
+.messages__search::placeholder {
+  font-size: 1rem;
+}
+
+.messages__list {
+  padding: 0;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  border-bottom: 1px solid gray;
+  padding: 2%;
+}
+
+.message__avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  margin: 5px;
+}
+
+.message__text {
+  text-shadow: 0px 0px 1px #fff;
+}
+
+.message__author {
+  display: flex;
+  gap: 5px;
+}
+
+.author__displayname {
+  white-space: nowrap;
+}
+
+.message__text,
+.author__username {
+  color: #808080;
+}

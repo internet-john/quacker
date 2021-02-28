@@ -4,17 +4,6 @@ import { useDispatch } from "react-redux";
 import { BsChat } from "react-icons/bs";
 import { FaRetweet } from "react-icons/fa";
 import { HiOutlineHeart, HiHeart, HiDotsHorizontal } from "react-icons/hi";
-import {
-  GiDoctorFace,
-  GiDoubleFaceMask,
-  GiDwarfFace,
-  GiFaceToFace,
-  GiInvisibleFace,
-  GiMonkFace,
-  GiNunFace,
-  GiTreeFace,
-  GiWitchFace,
-} from "react-icons/gi";
 import { FiShare } from "react-icons/fi";
 
 import { toggleOptionsDrawer } from "../../../../actions";

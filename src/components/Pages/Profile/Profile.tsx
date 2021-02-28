@@ -7,6 +7,14 @@ import ProfileAvatar from "../../../assets/profile__avatar.png";
 const Profile = () => {
   const [focusedTab, setFocusedTab] = useState("quacks");
 
+  const handleClickTab: (event: EventTarget) => EventTarget = function (
+    event: EventTarget
+  ) {
+    event.preventDefault();
+
+    setFocusedTab(event.target.id);
+  };
+
   return (
     <div className="profile__pg">
       <div className="profile__banner">
@@ -37,26 +45,30 @@ const Profile = () => {
       </div>
       <nav className="profile__tabs">
         <div
+          id="quacks"
           className={focusedTab === "quacks" ? "tab--focused" : "tab"}
-          // onClick={handleClickNotificationsTab}
+          onClick={handleClickTab}
         >
           Quacks
         </div>
         <div
+          id="quacksreplies"
           className={focusedTab === "quacksreplies" ? "tab--focused" : "tab"}
-          // onClick={handleClickNotificationsTab}
+          onClick={handleClickTab}
         >
           Quacks & replies
         </div>
         <div
+          id="media"
           className={focusedTab === "media" ? "tab--focused" : "tab"}
-          // onClick={handleClickNotificationsTab}
+          onClick={handleClickTab}
         >
           Media
         </div>
         <div
+          id="likes"
           className={focusedTab === "likes" ? "tab--focused" : "tab"}
-          // onClick={handleClickNotificationsTab}
+          onClick={handleClickTab}
         >
           Likes
         </div>
