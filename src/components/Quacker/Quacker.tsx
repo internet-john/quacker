@@ -25,9 +25,10 @@ import NavFooter from "../NavFooter";
 import "./index.css";
 
 import { fetchQuacks } from "../../actions";
+import { ActionType } from "../../actions/types";
 
 const Quacker = () => {
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch: Dispatch<ActionType> = useDispatch();
 
   dispatch(fetchQuacks());
 

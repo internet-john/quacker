@@ -30,7 +30,7 @@ const displayQuacks = (quacks: QuackDataType) => ({
   data: quacks,
 });
 
-const fetchNews = (category) => ({
+const fetchNews = (category: string) => ({
   type: ACTION_TYPES.FETCH_NEWS,
   category,
 });

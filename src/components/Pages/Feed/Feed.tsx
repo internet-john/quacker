@@ -14,6 +14,7 @@ const Feed = () => {
           quacksData.data.map((quack, idx) => (
             <FeedCard
               id={quack.id + idx}
+              key={quack.id + idx}
               text={quack.text}
               authorMeta={quack.authorMeta}
             />

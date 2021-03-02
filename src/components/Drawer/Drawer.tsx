@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import StoreState from "../../reducers/types";
 import { toggleOptionsDrawer } from "../../actions";
+import { ActionType } from "../../actions/types";
 
 const Drawer = () => {
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch: Dispatch<ActionType> = useDispatch();
 
   const selectIsOptionsDrawerVisible = (state: StoreState) =>
     state.isOptionsDrawerVisible;

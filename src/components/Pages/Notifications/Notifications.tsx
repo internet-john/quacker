@@ -268,8 +268,8 @@ const Notifications = () => {
   const [focusedTab, setFocusedTab] = useState("all");
 
   const handleClickNotificationsTab: (
-    event: EventTarget
-  ) => EventTarget = function (event: EventTarget) {
+    event: React.MouseEvent<HTMLDivElement>
+  ) => void = function (event: React.MouseEvent<HTMLDivElement>) {
     event.preventDefault();
 
     setFocusedTab(event.target.id);

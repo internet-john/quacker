@@ -13,6 +13,7 @@ const Bookmarks = () => {
           quacksData.data &&
           quacksData.data.map((quack, idx) => (
             <FeedCard
+              key={idx}
               id={quack.id + idx}
               text={quack.text}
               authorMeta={quack.authorMeta}

@@ -1,3 +1,5 @@
+import { RawAuthorMeta } from "../types";
+
 const fetchAvatars = async () => {
   const [
     avatarPayload,
@@ -22,7 +24,7 @@ const fetchAvatars = async () => {
   ];
 };
 
-const constructAuthorMeta = (dataObj) => ({
+const constructAuthorMeta = (dataObj: RawAuthorMeta) => ({
   username: `@${dataObj.last_name.toLowerCase()}${dataObj.first_name.toLowerCase()}`,
   avatar: dataObj.avatars[0].url,
   first_name: dataObj.first_name,

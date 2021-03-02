@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
@@ -9,10 +9,11 @@ import { IoIosArrowBack } from "react-icons/io";
 
 import StoryCarousel from "../StoryCarousel";
 import { toggleAppNav } from "../../actions";
+import { ActionType } from "../../actions/types";
 
 const determineHeaderIconLeft = (
   pathname: string,
-  handleClickIconLeft: Function
+  handleClickIconLeft: (event: React.MouseEvent<any>) => void
 ) => {
   let icon = (
     <GiHamburgerMenu className="header__icon" onClick={handleClickIconLeft} />
@@ -110,7 +111,7 @@ const determineHeaderIconRight = (pathname: string) => {
   }
 };
 const Header = () => {
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch: Dispatch<ActionType> = useDispatch();
   const history = useHistory();
   const location = useLocation();
   const handleClickIconLeft = () => {

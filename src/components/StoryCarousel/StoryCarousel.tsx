@@ -14,7 +14,7 @@ const StoryCarousel = () => {
       : [];
 
   const renderNewPost = ({ avatar, username }: AuthorMeta) => (
-    <div className="storypost">
+    <div className="storypost" key={username}>
       <img
         className="storypost--new"
         src={avatar}
@@ -25,7 +25,7 @@ const StoryCarousel = () => {
   );
 
   const renderViewedPost = ({ avatar, username }: AuthorMeta) => (
-    <div className="storypost">
+    <div className="storypost" key={username}>
       <img
         className="storypost--viewed"
         src={avatar}
