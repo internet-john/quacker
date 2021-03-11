@@ -30,8 +30,6 @@ import { ActionType } from "../../actions/types";
 const Quacker = () => {
   const dispatch: Dispatch<ActionType> = useDispatch();
 
-  dispatch(fetchQuacks());
-
   return (
     <div className="quacker">
       <Router>
