@@ -8,8 +8,10 @@ import {
 } from "../actions";
 import { fetchAuthorMeta } from "../utils/fetchAuthorMeta";
 
-function* fetchQuacks() {
-  const twitterApiClient = `http://localhost:3000/fetchquacks`;
+function* fetchQuacks({ query }) {
+  const twitterApiClient = new URL(`http://localhost:3000/fetchquacks`);
+  if (query) twitterApiClient.searchParams.append("query", query);
+
   const response = yield fetch(twitterApiClient);
   const authorMeta = yield fetchAuthorMeta();
 

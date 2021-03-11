@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
@@ -8,7 +8,7 @@ import { AiOutlineSetting } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 
 import StoryCarousel from "../StoryCarousel";
-import { toggleAppNav } from "../../actions";
+import { fetchQuacks, toggleAppNav } from "../../actions";
 import { ActionType } from "../../actions/types";
 
 const determineHeaderIconLeft = (
@@ -38,21 +38,14 @@ const determineHeaderIconLeft = (
   }
 };
 
-const determineHeaderTitle = (pathname: string) => {
+const determineHeaderTitle = (pathname: string, searchInput) => {
   let title;
   switch (pathname) {
     case "/":
       title = <GiPlasticDuck className="header__icon" />;
       return title;
     case "/search":
-      title = (
-        <input
-          className="header__search"
-          type="search"
-          placeholder="Search Quacker"
-          value=""
-        />
-      );
+      title = searchInput;
       return title;
     case "/notifications":
       title = <div className="header__title">Notifications</div>;
@@ -114,6 +107,16 @@ const Header = () => {
   const dispatch: Dispatch<ActionType> = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  const [input, setInput] = useState("");
+
+  const handleChangeInput = (event: InputEvent): void =>
+    setInput(event.target.value);
+
+  const handleKeyUp = (event: KeyboardEvent): void =>
+    event.keyCode === 13 ? handleSubmitSearch() : null;
+
+  const handleSubmitSearch = () => dispatch(fetchQuacks(input));
+
   const handleClickIconLeft = () => {
     switch (location.pathname) {
       case "/":
@@ -140,12 +143,23 @@ const Header = () => {
 
   const handleClickGoBack = () => history.goBack();
 
+  const searchInput = (
+    <input
+      className="header__search"
+      type="search"
+      placeholder="Search Quacker"
+      value={input}
+      onKeyUp={handleKeyUp}
+      onChange={handleChangeInput}
+    />
+  );
+
   return (
     <header className="header">
       <div className="header__nav">
         {determineHeaderIconLeft(location.pathname, handleClickIconLeft)}
         {location.pathname !== "/profile" &&
-          determineHeaderTitle(location.pathname)}
+          determineHeaderTitle(location.pathname, searchInput)}
         {location.pathname !== "/profile" &&
           determineHeaderIconRight(location.pathname)}
       </div>

@@ -9,8 +9,9 @@ const toggleAppNav = () => ({
   type: ACTION_TYPES.TOGGLE_APP_NAV,
 });
 
-const fetchQuacks = () => ({
+const fetchQuacks = (query) => ({
   type: ACTION_TYPES.FETCH_QUACKS,
+  query,
 });
 
 const fetchQuacksSuccess = () => ({
