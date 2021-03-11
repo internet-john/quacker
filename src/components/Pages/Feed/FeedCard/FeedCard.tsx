@@ -8,15 +8,17 @@ import { FiShare } from "react-icons/fi";
 
 import { toggleOptionsDrawer } from "../../../../actions";
 import { AuthorMeta } from "../../../../types";
+import { ActionType } from "../../../../actions/types";
 
 type FeedCardProps = {
   id: string;
+  key: number;
   text: string;
   authorMeta: AuthorMeta;
 };
 
-const FeedCard = ({ id, text, authorMeta }: FeedCardProps) => {
-  const dispatch: Dispatch<any> = useDispatch();
+const FeedCard = ({ id, key, text, authorMeta }: FeedCardProps) => {
+  const dispatch: Dispatch<ActionType> = useDispatch();
   const handleClickToggleOptionsDrawer = () => dispatch(toggleOptionsDrawer());
 
   return (

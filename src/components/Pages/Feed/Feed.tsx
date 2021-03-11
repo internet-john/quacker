@@ -10,10 +10,11 @@ const Feed = () => {
     <section className="feed">
       <ul className="feed__listings">
         {quacksData &&
-          quacksData.data &&
-          quacksData.data.map((quack, idx) => (
+          quacksData.length &&
+          quacksData.map((quack, idx) => (
             <FeedCard
               id={quack.id + idx}
+              key={quack.id + idx}
               text={quack.text}
               authorMeta={quack.authorMeta}
             />

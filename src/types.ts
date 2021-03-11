@@ -1,3 +1,14 @@
+type RawAuthorAvatarObj = {
+  url: string;
+};
+
+type RawAuthorMeta = {
+  avatars: RawAuthorAvatarObj[];
+  first_name: string;
+  last_name: string;
+  username: string;
+};
+
 type AuthorMeta = {
   avatar: string;
   first_name: string;
@@ -50,4 +61,4 @@ type QuackDataType = QuackData | EmptyQuackData;
 
 type NewsDataType = NewsData | EmptyNewsData;
 
-export type { AuthorMeta, QuackDataType, NewsDataType };
+export type { AuthorMeta, RawAuthorMeta, QuackDataType, NewsDataType };

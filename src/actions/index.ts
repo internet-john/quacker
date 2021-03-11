@@ -1,6 +1,3 @@
-import getUserTimeline from "../utils/fetch";
-import { fetchAuthorMeta } from "../utils/fetchAuthorMeta";
-
 import { ACTION_TYPES, DispatchType } from "./types";
 import { QuackDataType, NewsDataType } from "../types";
 
@@ -12,15 +9,15 @@ const toggleAppNav = () => ({
   type: ACTION_TYPES.TOGGLE_APP_NAV,
 });
 
-const requestQuacks = () => ({
+const fetchQuacks = () => ({
   type: ACTION_TYPES.FETCH_QUACKS,
 });
 
-const requestQuacksSuccess = () => ({
+const fetchQuacksSuccess = () => ({
   type: ACTION_TYPES.FETCH_QUACKS_SUCCESS,
 });
 
-const requestQuacksFailure = (error: string) => ({
+const fetchQuacksFailure = (error: string) => ({
   type: ACTION_TYPES.FETCH_QUACKS_FAILURE,
   error,
 });
@@ -30,7 +27,7 @@ const displayQuacks = (quacks: QuackDataType) => ({
   data: quacks,
 });
 
-const fetchNews = (category) => ({
+const fetchNews = (category: string) => ({
   type: ACTION_TYPES.FETCH_NEWS,
   category,
 });
@@ -49,37 +46,16 @@ const displayNews = (news: NewsDataType) => ({
   data: news,
 });
 
-const fetchQuacks = () => {
-  return (dispatch: DispatchType) => {
-    setTimeout(async () => {
-      dispatch(requestQuacks());
-      const quacksData = await getUserTimeline();
-      const authorMeta = await fetchAuthorMeta();
-
-      authorMeta.map((authorData, idx) => {
-        quacksData.data[idx] = {
-          ...quacksData.data[idx],
-          authorMeta: authorData,
-        };
-      });
-
-      if (quacksData) {
-        dispatch(requestQuacksSuccess());
-        dispatch(displayQuacks(quacksData));
-      } else {
-        dispatch(requestQuacksFailure("Fetch failed."));
-      }
-    }, 500);
-  };
-};
-
 export {
   ACTION_TYPES,
   toggleOptionsDrawer,
   toggleAppNav,
   fetchQuacks,
+  fetchQuacksSuccess,
+  fetchQuacksFailure,
   fetchNews,
   fetchNewsSuccess,
   fetchNewsFailure,
   displayNews,
+  displayQuacks,
 };

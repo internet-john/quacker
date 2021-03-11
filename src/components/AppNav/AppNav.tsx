@@ -12,9 +12,10 @@ import { HiOutlineChat } from "react-icons/hi";
 import Avatar from "../../assets/profile__avatar.png";
 import StoreState from "../../reducers/types";
 import { toggleAppNav } from "../../actions";
+import { ActionType } from "../../actions/types";
 
 const AppNav = () => {
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch: Dispatch<ActionType> = useDispatch();
   const selectIsAppNavVisible = (state: StoreState) => state.isAppNavVisible;
   // const selectDrawerOriginContext = (state: StoreState) => state.drawerOriginContext;
   const isAppNavVisible = useSelector(selectIsAppNavVisible);
@@ -26,8 +27,10 @@ const AppNav = () => {
    *  Once complete, bring back button accounts
    *
    */
-  const handleClickCloseNav: (evt: Event) => void = function (evt: Event) {
-    evt.preventDefault();
+  const handleClickCloseNav: (event: React.MouseEvent<any>) => void = function (
+    event
+  ) {
+    event.preventDefault();
     dispatch(toggleAppNav());
   };
 

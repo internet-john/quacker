@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import StoreState from "../../../reducers/types";
 import { fetchNews } from "../../../actions";
+import { ActionType } from "../../../actions/types";
+import StoreState from "../../../reducers/types";
+import { NewsDataType } from "../../../types";
 
 const Search = () => {
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch: Dispatch<ActionType> = useDispatch();
   const selectNewsArticles = (state: StoreState) => state.news;
   const selectNewsCategory = (state: StoreState) => state.newsCategory;
   const [selectedTab, setSelectedTab] = useState("general");
@@ -23,8 +25,9 @@ const Search = () => {
   };
 
   const renderFeed = () =>
-    news.map((article, idx) => (
+    news.map((article: NewsDataType, idx: number) => (
       <li
+        key={article.publishedAt}
         className={
           idx === 0 && article.urlToImage ? "article--featured" : "article"
         }
