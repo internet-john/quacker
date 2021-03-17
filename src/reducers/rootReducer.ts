@@ -7,11 +7,16 @@ const initialState: StoreState = {
   quacks: [],
   news: [],
   newsCategory: "general",
+  userSearchCategory: "top",
   isLoading: false,
   quacksFetched: false,
   quacksDisplayed: false,
   newsFetched: false,
   newsDisplayed: false,
+  isUserInputSearch: false,
+  // todo: bifurcate feeds into generated (for you on search, timeline on home tab)
+  // timelineFeed: [],
+  // searchFeed: [],
 };
 
 const rootReducer = (
@@ -30,7 +35,11 @@ const rootReducer = (
         isAppNavVisible: !state.isAppNavVisible,
       };
     case ACTION_TYPES.FETCH_QUACKS:
-      return { ...state, isLoading: !state.isLoading };
+      return {
+        ...state,
+        isLoading: !state.isLoading,
+        isUserInputSearch: Boolean(action.query && action.query.length),
+      };
     case ACTION_TYPES.FETCH_QUACKS_SUCCESS:
       return { ...state, isLoading: !state.isLoading };
     case ACTION_TYPES.FETCH_QUACKS_FAILURE:
@@ -38,7 +47,7 @@ const rootReducer = (
     case ACTION_TYPES.DISPLAY_QUACKS:
       return {
         ...state,
-        quacks: [...state.quacks, action.data],
+        quacks: /*[...state.quacks, action.data],*/ action.data,
         isLoading: !state.isLoading,
         quacksFetched: !state.quacksFetched,
         quacksDisplayed: !state.quacksDisplayed,

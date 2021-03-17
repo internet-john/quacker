@@ -4,7 +4,7 @@ import StoreState from "../../../reducers/types";
 import FeedCard from "./FeedCard";
 
 const Feed = () => {
-  const selectQuacksData = (state: StoreState) => state.quacks[0];
+  const selectQuacksData = (state: StoreState) => state.quacks;
   const quacksData = useSelector(selectQuacksData);
   return (
     <section className="feed">

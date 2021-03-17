@@ -5,26 +5,45 @@ import { fetchNews } from "../../../actions";
 import { ActionType } from "../../../actions/types";
 import StoreState from "../../../reducers/types";
 import { NewsDataType } from "../../../types";
+import Feed from "../Feed";
 
 const Search = () => {
   const dispatch: Dispatch<ActionType> = useDispatch();
   const selectNewsArticles = (state: StoreState) => state.news;
   const selectNewsCategory = (state: StoreState) => state.newsCategory;
-  const [selectedTab, setSelectedTab] = useState("general");
+  const selectUserSearchCategory = (state: StoreState) =>
+    state.userSearchCategory;
+  const selectIsUserInputSearch = (state: StoreState) =>
+    state.isUserInputSearch;
+
+  const [selectedNewsTab, setSelectedNewsTab] = useState("general");
+  const [selectedSearchTab, setSelectedSearchTab] = useState("top");
 
   const news = useSelector(selectNewsArticles);
-  const focusedTab = useSelector(selectNewsCategory);
+  const focusedNewsTab = useSelector(selectNewsCategory);
+  const focusedSearchTab = useSelector(selectUserSearchCategory);
+  const isUserInputSearch = useSelector(selectIsUserInputSearch);
 
   const handleClickNewsFilter: (event: EventTarget) => EventTarget = function (
     event: EventTarget
   ) {
     event.preventDefault();
 
-    setSelectedTab(event.target.id);
-    if (event.target.id !== focusedTab) dispatch(fetchNews(event.target.id));
+    setSelectedNewsTab(event.target.id);
+    if (event.target.id !== focusedNewsTab)
+      dispatch(fetchNews(event.target.id));
   };
 
-  const renderFeed = () =>
+  const handleClickQuacksFilter: (
+    event: EventTarget
+  ) => EventTarget = function (event: EventTarget) {
+    event.preventDefault();
+
+    // setSelectedTab(event.target.id);
+    // if (event.target.id !== focusedTab) dispatch(fetchNews(event.target.id));
+  };
+
+  const renderTopicFeed = () =>
     news.map((article: NewsDataType, idx: number) => (
       <li
         key={article.publishedAt}
@@ -54,77 +73,160 @@ const Search = () => {
       </li>
     ));
 
+  const renderTopicNav = () => (
+    <nav className="search__categories">
+      <div
+        id="general"
+        className={
+          focusedNewsTab === "general"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickNewsFilter}
+      >
+        For you
+      </div>
+      <div
+        id="covid19"
+        className={
+          focusedNewsTab === "covid19"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickNewsFilter}
+      >
+        COVID-19
+      </div>
+      <div
+        id="trending"
+        className={
+          focusedNewsTab === "trending"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickNewsFilter}
+      >
+        Trending
+      </div>
+      <div
+        id="technology"
+        className={
+          focusedNewsTab === "technology"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickNewsFilter}
+      >
+        Technology
+      </div>
+      <div
+        id="sports"
+        className={
+          focusedNewsTab === "sports"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickNewsFilter}
+      >
+        Sports
+      </div>
+      <div
+        id="entertainment"
+        className={
+          focusedNewsTab === "entertainment"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickNewsFilter}
+      >
+        Entertainment
+      </div>
+    </nav>
+  );
+
+  const renderUserSearchNav = () => (
+    <nav className="search__categories">
+      <div
+        id="top"
+        className={
+          focusedSearchTab === "top"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickQuacksFilter}
+      >
+        Top
+      </div>
+      <div
+        id="latest"
+        className={
+          focusedSearchTab === "latest"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickQuacksFilter}
+      >
+        Latest
+      </div>
+      <div
+        id="people"
+        className={
+          focusedSearchTab === "people"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickQuacksFilter}
+      >
+        People
+      </div>
+      <div
+        id="photos"
+        className={
+          focusedSearchTab === "photos"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickQuacksFilter}
+      >
+        Photos
+      </div>
+      <div
+        id="videos"
+        className={
+          focusedSearchTab === "videos"
+            ? "category__tab--focused"
+            : "category__tab"
+        }
+        onClick={handleClickQuacksFilter}
+      >
+        Videos
+      </div>
+    </nav>
+  );
+
+  const renderSearchFeed = () => <Feed />;
+
+  const renderUserSearchView = () => (
+    <>
+      {renderUserSearchNav()}
+      <section className="feed">
+        <ul className="feed__content">{renderSearchFeed()}</ul>
+      </section>
+    </>
+  );
+
+  const renderDefaultView = () => (
+    <>
+      {renderTopicNav()}
+      <section className="feed">
+        <ul className="feed__content">{renderTopicFeed()}</ul>
+      </section>
+    </>
+  );
+
   return (
     <div className="search__pg">
-      <nav className="search__categories">
-        <div
-          id="general"
-          className={
-            focusedTab === "general"
-              ? "category__tab--focused"
-              : "category__tab"
-          }
-          onClick={handleClickNewsFilter}
-        >
-          For you
-        </div>
-        <div
-          id="covid19"
-          className={
-            focusedTab === "covid19"
-              ? "category__tab--focused"
-              : "category__tab"
-          }
-          onClick={handleClickNewsFilter}
-        >
-          COVID-19
-        </div>
-        <div
-          id="trending"
-          className={
-            focusedTab === "trending"
-              ? "category__tab--focused"
-              : "category__tab"
-          }
-          onClick={handleClickNewsFilter}
-        >
-          Trending
-        </div>
-        <div
-          id="technology"
-          className={
-            focusedTab === "technology"
-              ? "category__tab--focused"
-              : "category__tab"
-          }
-          onClick={handleClickNewsFilter}
-        >
-          Technology
-        </div>
-        <div
-          id="sports"
-          className={
-            focusedTab === "sports" ? "category__tab--focused" : "category__tab"
-          }
-          onClick={handleClickNewsFilter}
-        >
-          Sports
-        </div>
-        <div
-          id="entertainment"
-          className={
-            focusedTab === "entertainment"
-              ? "category__tab--focused"
-              : "category__tab"
-          }
-          onClick={handleClickNewsFilter}
-        >
-          Entertainment
-        </div>
-      </nav>
-      <section className="feed">
-        <ul className="feed__content">{renderFeed()}</ul>
-      </section>
+      {isUserInputSearch ? renderUserSearchView() : renderDefaultView()}
     </div>
   );
 };
