@@ -4,20 +4,17 @@ import Dotenv from "dotenv-webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const config: webpack.Configuration = {
-  mode: "production",
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "[name].[contenthash].js",
-    publicPath: "",
+    filename: "bundle.js",
   },
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/i,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -45,19 +42,27 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new Dotenv({
-      path: path.resolve(__dirname, "./.env"),
+      path: path.resolve(__dirname, "./src/sagas/.env"),
     }),
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
       async: false,
     }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
     }),
-    new CleanWebpackPlugin(),
   ],
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: path.join(__dirname, "build"),
+    historyApiFallback: true,
+    port: 1234,
+    open: true,
+    hot: true,
+  },
 };
 
 export default config;
