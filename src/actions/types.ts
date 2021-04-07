@@ -17,6 +17,7 @@ interface ActionType {
   type: string;
   error?: string;
   data?: QuackDataType;
+  query?: string;
 }
 
 type DispatchType = (args: ActionType) => ActionType;

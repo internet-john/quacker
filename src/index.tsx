@@ -31,7 +31,7 @@ const store: Store<StoreState, ActionType> & {
 
 sagaMiddleware.run(rootSaga);
 
-store.dispatch(fetchQuacks());
+store.dispatch(fetchQuacks(""));
 store.dispatch(fetchNews("general"));
 
 ReactDOM.render(

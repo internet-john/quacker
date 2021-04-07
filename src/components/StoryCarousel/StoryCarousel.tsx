@@ -8,11 +8,6 @@ const StoryCarousel = () => {
   const selectQuacks = (state: StoreState) => state.quacks;
   const quacks = useSelector(selectQuacks);
 
-  const avatars =
-    quacks && quacks[0] && quacks[0].data
-      ? quacks[0].data.map((quack: QuackDataType) => quack.authorMeta.avatar)
-      : [];
-
   const renderNewPost = ({ avatar, username }: AuthorMeta) => (
     <div className="storypost" key={username}>
       <img
@@ -37,13 +32,15 @@ const StoryCarousel = () => {
 
   return (
     <div className="storycarousel">
-      {quacks && quacks[0] && quacks[0].data
-        ? quacks[0].data.map((quack: QuackDataType, idx: number) =>
-            idx % 3 === 0
-              ? renderNewPost(quack.authorMeta)
-              : renderViewedPost(quack.authorMeta)
-          )
-        : null}
+      {
+        /*quacks && quacks[0] && quacks[0].data*/ quacks && quacks.length
+          ? quacks.map((quack: QuackDataType, idx: number) =>
+              idx % 3 === 0
+                ? renderNewPost(quack.authorMeta)
+                : renderViewedPost(quack.authorMeta)
+            )
+          : null
+      }
     </div>
   );
 };
