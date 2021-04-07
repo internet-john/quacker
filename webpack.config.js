@@ -8,9 +8,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "boondle.js",
+    path: path.join(__dirname, "dist"),
+    filename: "index.bundle.js",
+    clean: true,
   },
+  mode: process.env.NODE_ENV || "development",
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  devServer: { contentBase: path.join(__dirname, "src") },
   module: {
     rules: [
       {
@@ -33,9 +39,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
   plugins: [
     new Dotenv({
       path: path.resolve(__dirname, "./src/sagas/.env"),
@@ -53,7 +56,7 @@ module.exports = {
   ],
   devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "build"),
+    contentBase: path.join(__dirname, "dist"),
     historyApiFallback: true,
     port: 1234,
     open: true,
