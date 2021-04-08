@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 // const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 // const ESLintPlugin = require("eslint-webpack-plugin");
 
@@ -16,7 +17,6 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
-  devServer: { contentBase: path.join(__dirname, "src") },
   module: {
     rules: [
       {
@@ -47,6 +47,7 @@ module.exports = {
       template: "src/index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin(),
     // new ForkTsCheckerWebpackPlugin({
     //   async: false,
     // }),

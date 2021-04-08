@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { GiHamburgerMenu, GiPlasticDuck } from "react-icons/gi";
+import { FaEarlybirds } from "react-icons/fa";
 import { HiOutlineSparkles, HiDotsHorizontal } from "react-icons/hi";
+import { MdMenu } from "react-icons/md";
 import { AiOutlineSetting } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -15,9 +16,7 @@ const determineHeaderIconLeft = (
   pathname: string,
   handleClickIconLeft: (event: React.MouseEvent<any>) => void
 ) => {
-  let icon = (
-    <GiHamburgerMenu className="header__icon" onClick={handleClickIconLeft} />
-  );
+  let icon = <MdMenu className="header__icon" onClick={handleClickIconLeft} />;
   switch (pathname) {
     case "/profile":
     case "/lists":
@@ -42,7 +41,7 @@ const determineHeaderTitle = (pathname: string, searchInput) => {
   let title;
   switch (pathname) {
     case "/":
-      title = <GiPlasticDuck className="header__icon" />;
+      title = <FaEarlybirds className="header__icon" />;
       return title;
     case "/search":
       title = searchInput;
