@@ -10,8 +10,13 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "index.bundle.js",
+    filename: "[name].[contenthash].js",
     clean: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
   },
   mode: process.env.NODE_ENV || "development",
   resolve: {
@@ -27,7 +32,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ["ts-loader"],
+        use: [{ loader: "ts-loader", options: { transpileOnly: true } }],
       },
       {
         test: /\.(css|scss)$/,
@@ -44,6 +49,7 @@ module.exports = {
       path: path.resolve(__dirname, "./src/sagas/.env"),
     }),
     new HtmlWebpackPlugin({
+      filename: "./index.html",
       template: "src/index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
@@ -63,4 +69,7 @@ module.exports = {
     open: true,
     hot: true,
   },
+  // optimization: {
+  //   usedExports: true,
+  // },
 };
