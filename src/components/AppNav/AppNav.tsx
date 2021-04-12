@@ -3,16 +3,20 @@ import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { IoIosClose } from "react-icons/io";
-import { BsPerson, BsLightning, BsLightningFill } from "react-icons/bs";
-import { CgNotes } from "react-icons/cg";
-import { MdBookmarkBorder } from "react-icons/md";
-import { HiOutlineChat } from "react-icons/hi";
 
 import Avatar from "../../assets/profile__avatar.png";
 import StoreState from "../../reducers/types";
 import { toggleAppNav } from "../../actions";
 import { ActionType } from "../../actions/types";
+
+import {
+  IoIosClose,
+  BsPerson,
+  BsLightning,
+  VscNote,
+  MdBookmarkBorder,
+  HiOutlineChat,
+} from "../../assets/icons";
 
 const AppNav = () => {
   const dispatch: Dispatch<ActionType> = useDispatch();
@@ -77,7 +81,7 @@ const AppNav = () => {
           </li>
           <li className="link" onClick={handleClickCloseNav}>
             <Link to="/lists">
-              <CgNotes />
+              <VscNote />
               Lists
             </Link>
           </li>

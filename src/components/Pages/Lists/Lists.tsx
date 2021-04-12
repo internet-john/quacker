@@ -1,7 +1,3 @@
-import React from "react";
-import { CgNotes } from "react-icons/cg";
-import { BiListPlus } from "react-icons/bi";
-
 const Lists = () => {
   const lists = null;
   return (

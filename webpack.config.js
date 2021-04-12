@@ -7,9 +7,12 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 // const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: {
+    index: { import: "./src/index.tsx", dependOn: "shared" },
+    shared: "react-icons",
+  },
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
     clean: true,
   },
@@ -63,13 +66,10 @@ module.exports = {
   ],
   devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.resolve(__dirname, "dist"),
     historyApiFallback: true,
     port: 1234,
     open: true,
     hot: true,
   },
-  // optimization: {
-  //   usedExports: true,
-  // },
 };

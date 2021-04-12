@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { FaEarlybirds } from "react-icons/fa";
-import { HiOutlineSparkles, HiDotsHorizontal } from "react-icons/hi";
-import { MdMenu } from "react-icons/md";
-import { AiOutlineSetting } from "react-icons/ai";
-import { IoIosArrowBack } from "react-icons/io";
 
 import StoryCarousel from "../StoryCarousel";
 import { fetchQuacks, toggleAppNav } from "../../actions";
 import { ActionType } from "../../actions/types";
+
+import {
+  MdMenu,
+  IoIosArrowBack,
+  FaEarlybirds,
+  HiOutlineSparkles,
+  AiOutlineSetting,
+  HiDotsHorizontal,
+} from "../../assets/icons";
 
 const determineHeaderIconLeft = (
   pathname: string,
@@ -71,7 +75,7 @@ const determineHeaderTitle = (pathname: string, searchInput) => {
       title = <div className="header__title">Help center</div>;
       return title;
     default:
-      title = <GiPlasticDuck />;
+      title = <FaEarlybirds />;
       return title;
   }
 };

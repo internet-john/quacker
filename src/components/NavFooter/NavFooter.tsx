@@ -1,8 +1,6 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
-import { AiFillHome } from "react-icons/ai";
-import { IoMdSearch } from "react-icons/io";
-import { VscMail, VscBell } from "react-icons/vsc";
+import { AiFillHome, IoMdSearch, VscBell, VscMail } from "../../assets/icons";
+
 import Drawer from "../Drawer";
 
 const NavFooter = () => (

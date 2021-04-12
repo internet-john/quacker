@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { FcLike } from "react-icons/fc";
-import { BsChatFill, BsPersonFill, BsLightningFill } from "react-icons/bs";
-import { BiRepost } from "react-icons/bi";
 
 import Sandy from "../../../assets/sandy_cheeks_avatar.png";
 import Squidward from "../../../assets/squidward_avatar.png";
@@ -9,7 +6,7 @@ import Gary from "../../../assets/gary_avatar.png";
 import Patrick from "../../../assets/patrick_avatar.png";
 import MrKrabs from "../../../assets/mr_krabs_avatar.png";
 import MsPuff from "../../../assets/ms_puff_avatar.png";
-
+import { HiHeart } from "../../../assets/icons";
 const notifications = [
   {
     ts: 1613366609,
@@ -171,7 +168,7 @@ const renderNotifications = () =>
         <li className="notification--like" key={ts}>
           <div className="notification__content">
             <div className="notification__authorgraphic">
-              <FcLike />
+              <HiHeart />
               <img className="notification__author--avatar" src={avatar} />{" "}
             </div>
             <div className="notification__text">

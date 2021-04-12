@@ -1,14 +1,17 @@
-import React from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
-import { BsChat } from "react-icons/bs";
-import { FaRetweet } from "react-icons/fa";
-import { HiOutlineHeart, HiHeart, HiDotsHorizontal } from "react-icons/hi";
-import { FiShare } from "react-icons/fi";
 
 import { toggleOptionsDrawer } from "../../../../actions";
 import { AuthorMeta } from "../../../../types";
 import { ActionType } from "../../../../actions/types";
+
+import {
+  BsChat,
+  FaRetweet,
+  HiOutlineHeart,
+  IoMdShare,
+  HiDotsHorizontal,
+} from "../../../../assets/icons";
 
 type FeedCardProps = {
   id: string;
@@ -54,7 +57,7 @@ const FeedCard = ({ id, key, text, authorMeta }: FeedCardProps) => {
             </div>
           </li>
           <li className="quack__share">
-            <FiShare />
+            <IoMdShare />
           </li>
         </ul>
       </div>

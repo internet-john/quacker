@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { HiLink } from "react-icons/hi";
+import { useState } from "react";
 
 import KrabbyPatty from "../../../assets/krabbypatty.png";
 import ProfileAvatar from "../../../assets/profile__avatar.png";
