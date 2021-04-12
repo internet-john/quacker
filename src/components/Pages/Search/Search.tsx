@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchNews } from "../../../actions";
@@ -53,7 +53,11 @@ const Search = () => {
       >
         <a href={article.url}>
           {idx === 0 ? (
-            <img className="article--featured__img" src={article.urlToImage} />
+            <img
+              loading={"lazy"}
+              className="article--featured__img"
+              src={article.urlToImage}
+            />
           ) : null}
           <div className="article__content">
             <div className="article__publish--meta">

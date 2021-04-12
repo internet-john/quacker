@@ -11,9 +11,12 @@ const StoryCarousel = () => {
   const renderNewPost = ({ avatar, username }: AuthorMeta) => (
     <div className="storypost" key={username}>
       <img
+        loading={"lazy"}
         className="storypost--new"
         src={avatar}
         alt="storycarousel__user--avatar"
+        width="200"
+        height="200"
       />
       {`${username.slice(1, 6)}...`}
     </div>
@@ -22,6 +25,7 @@ const StoryCarousel = () => {
   const renderViewedPost = ({ avatar, username }: AuthorMeta) => (
     <div className="storypost" key={username}>
       <img
+        loading={"lazy"}
         className="storypost--viewed"
         src={avatar}
         alt="storycarousel__user--avatar"

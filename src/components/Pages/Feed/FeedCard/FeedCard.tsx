@@ -27,9 +27,12 @@ const FeedCard = ({ id, key, text, authorMeta }: FeedCardProps) => {
   return (
     <li className="quackcard" key={id}>
       <img
+        loading={"lazy"}
         className="quackcard__avatar"
         src={authorMeta.avatar}
         alt="avatar-image"
+        width="200"
+        height="200"
       />
       <div className="card__content">
         <div className="quackcard__author">

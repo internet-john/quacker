@@ -45,6 +45,7 @@ const AppNav = () => {
           <Link className="user__block" to="/profile">
             <>
               <img
+                loading={"lazy"}
                 src={Avatar}
                 alt="profile__avatar"
                 className="appnav__avatar"

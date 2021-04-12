@@ -62,7 +62,12 @@ import {
 // import { CgNotes } from "react-icons/cg";
 
 // react-icons/md
-import { MdBookmarkBorder, MdMenu, MdInsertComment } from "react-icons/md";
+import {
+  MdBookmarkBorder,
+  MdMenu,
+  MdInsertComment,
+  MdPlaylistAdd,
+} from "react-icons/md";
 
 // react-icons/hi
 import {
@@ -97,6 +102,7 @@ export {
   MdBookmarkBorder,
   MdMenu,
   MdInsertComment,
+  MdPlaylistAdd,
   HiOutlineChat,
   HiLink,
   HiOutlineSparkles,

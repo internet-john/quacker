@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { HiLink } from "../../../assets/icons";
 import KrabbyPatty from "../../../assets/krabbypatty.png";
 import ProfileAvatar from "../../../assets/profile__avatar.png";
 
@@ -17,11 +18,15 @@ const Profile = () => {
   return (
     <div className="profile__pg">
       <div className="profile__banner">
-        <img src={KrabbyPatty} />
+        <img loading={"lazy"} src={KrabbyPatty} />
       </div>
       <div className="profile__details">
         <div className="profile--edit">
-          <img className="profilepg__avatar" src={ProfileAvatar} />
+          <img
+            loading={"lazy"}
+            className="profilepg__avatar"
+            src={ProfileAvatar}
+          />
           <button className="profile__button--edit">Edit profile</button>
         </div>
         <div className="profile__names">

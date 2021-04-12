@@ -6,7 +6,13 @@ import Gary from "../../../assets/gary_avatar.png";
 import Patrick from "../../../assets/patrick_avatar.png";
 import MrKrabs from "../../../assets/mr_krabs_avatar.png";
 import MsPuff from "../../../assets/ms_puff_avatar.png";
-import { HiHeart } from "../../../assets/icons";
+import {
+  BsPersonFill,
+  BsChatFill,
+  BsLightningFill,
+  HiHeart,
+  FaRetweet,
+} from "../../../assets/icons";
 const notifications = [
   {
     ts: 1613366609,
@@ -113,7 +119,11 @@ const renderNotifications = () =>
           <div className="notification__content">
             <div className="notification__authorgraphic">
               <BsPersonFill />
-              <img className="notification__author--avatar" src={avatar} />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> followed you
@@ -127,7 +137,11 @@ const renderNotifications = () =>
           <div className="notification__content">
             <div className="notification__authorgraphic">
               <BsChatFill />
-              <img className="notification__author--avatar" src={avatar} />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> replied to your quack
@@ -141,7 +155,11 @@ const renderNotifications = () =>
           <div className="notification__content">
             <div className="notification__authorgraphic">
               <BsChatFill />
-              <img className="notification__author--avatar" src={avatar} />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> replied to your Requack
@@ -155,7 +173,11 @@ const renderNotifications = () =>
           <div className="notification__content">
             <div className="notification__authorgraphic">
               <BsChatFill />
-              <img className="notification__author--avatar" src={avatar} />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> replied to your reply
@@ -169,7 +191,11 @@ const renderNotifications = () =>
           <div className="notification__content">
             <div className="notification__authorgraphic">
               <HiHeart />
-              <img className="notification__author--avatar" src={avatar} />{" "}
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />{" "}
             </div>
             <div className="notification__text">
               <strong>{author}</strong> liked your Quack
@@ -182,8 +208,12 @@ const renderNotifications = () =>
         <li className="notification--like" key={ts}>
           <div className="notification__content">
             <div className="notification__authorgraphic">
-              <FcLike />
-              <img className="notification__author--avatar" src={avatar} />
+              <HiHeart />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> liked your reply
@@ -196,8 +226,12 @@ const renderNotifications = () =>
         <li className="notification--like" key={ts}>
           <div className="notification__content">
             <div className="notification__authorgraphic">
-              <FcLike />
-              <img className="notification__author--avatar" src={avatar} />
+              <HiHeart />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> liked your Requack
@@ -210,8 +244,12 @@ const renderNotifications = () =>
         <li className="notification--requack" key={ts}>
           <div className="notification__content">
             <div className="notification__authorgraphic">
-              <BiRepost />
-              <img className="notification__author--avatar" src={avatar} />
+              <FaRetweet />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> requacked your quack
@@ -224,8 +262,12 @@ const renderNotifications = () =>
         <li className="notification--requack" key={ts}>
           <div className="notification__content">
             <div className="notification__authorgraphic">
-              <BiRepost />
-              <img className="notification__author--avatar" src={avatar} />
+              <FaRetweet />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> requacked your reply
@@ -238,8 +280,12 @@ const renderNotifications = () =>
         <li className="notification--requack" key={ts}>
           <div className="notification__content">
             <div className="notification__authorgraphic">
-              <BiRepost />
-              <img className="notification__author--avatar" src={avatar} />
+              <FaRetweet />
+              <img
+                loading={"lazy"}
+                className="notification__author--avatar"
+                src={avatar}
+              />
             </div>
             <div className="notification__text">
               <strong>{author}</strong> requacked your quack
