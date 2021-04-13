@@ -13,8 +13,7 @@ const Search = () => {
   const selectNewsCategory = (state: StoreState) => state.newsCategory;
   const selectUserSearchCategory = (state: StoreState) =>
     state.userSearchCategory;
-  const selectIsUserInputSearch = (state: StoreState) =>
-    state.isUserInputSearch;
+  const selectUserInputSearch = (state: StoreState) => state.userInputSearch;
 
   const [selectedNewsTab, setSelectedNewsTab] = useState("general");
   const [selectedSearchTab, setSelectedSearchTab] = useState("top");
@@ -22,7 +21,8 @@ const Search = () => {
   const news = useSelector(selectNewsArticles);
   const focusedNewsTab = useSelector(selectNewsCategory);
   const focusedSearchTab = useSelector(selectUserSearchCategory);
-  const isUserInputSearch = useSelector(selectIsUserInputSearch);
+  const userInputSearch = useSelector(selectUserInputSearch);
+  const isUserInputSearch = Boolean(userInputSearch);
 
   const handleClickNewsFilter: (event: EventTarget) => EventTarget = function (
     event: EventTarget

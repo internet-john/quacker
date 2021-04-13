@@ -4,15 +4,17 @@ interface StoreState {
   isOptionsDrawerVisible: boolean;
   isAppNavVisible: boolean;
   quacks: QuackDataType | [];
+  quacksNextToken: string;
   news: NewsDataType | [];
   newsCategory: string;
+  userInputSearch: string;
   userSearchCategory: string;
   isLoading: boolean;
   quacksFetched: boolean;
   quacksDisplayed: boolean;
   newsFetched: boolean;
   newsDisplayed: boolean;
-  isUserInputSearch: boolean;
+  flushExistingFeedContent: boolean;
 }
 
 export default StoreState;
