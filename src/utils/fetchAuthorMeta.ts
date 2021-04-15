@@ -1,27 +1,9 @@
 import { RawAuthorMeta } from "../types";
 
 const fetchAvatars = async () => {
-  const [
-    avatarPayload,
-    avatarPayload2,
-    avatarPayload3,
-    avatarPayload4,
-    avatarPayload5,
-  ] = [
-    await fetch(`https://tinyfac.es/api/users`),
-    await fetch(`https://tinyfac.es/api/users`),
-    await fetch(`https://tinyfac.es/api/users`),
-    await fetch(`https://tinyfac.es/api/users`),
-    await fetch(`https://tinyfac.es/api/users`),
-  ];
+  const avatarPayload = await fetch(`https://tinyfac.es/api/users`);
 
-  return [
-    ...(await avatarPayload.json()),
-    ...(await avatarPayload2.json()),
-    ...(await avatarPayload3.json()),
-    ...(await avatarPayload4.json()),
-    ...(await avatarPayload5.json()),
-  ];
+  return await avatarPayload.json();
 };
 
 const constructAuthorMeta = (dataObj: RawAuthorMeta) => ({

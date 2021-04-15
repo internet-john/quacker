@@ -7,11 +7,19 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 // const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: {
+    index: { import: "./src/index.tsx", dependOn: "shared" },
+    shared: "react-icons",
+  },
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "index.bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash].js",
     clean: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
   },
   mode: process.env.NODE_ENV || "development",
   resolve: {
@@ -27,7 +35,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ["ts-loader"],
+        use: [{ loader: "ts-loader", options: { transpileOnly: true } }],
       },
       {
         test: /\.(css|scss)$/,
@@ -44,6 +52,7 @@ module.exports = {
       path: path.resolve(__dirname, "./src/sagas/.env"),
     }),
     new HtmlWebpackPlugin({
+      filename: "./index.html",
       template: "src/index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
@@ -57,7 +66,7 @@ module.exports = {
   ],
   devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.resolve(__dirname, "dist"),
     historyApiFallback: true,
     port: 1234,
     open: true,

@@ -153,7 +153,12 @@ const messages = [
 const renderMessages = () =>
   messages.map(({ ts, author, username, avatar, message }) => (
     <li className="message" key={ts}>
-      <img className="message__avatar" src={avatar} alt="avatar-image" />
+      <img
+        loading={"lazy"}
+        className="message__avatar"
+        src={avatar}
+        alt="avatar-image"
+      />
       <div className="message__content">
         <div className="message__author">
           <div className="author__displayname">{author}</div>

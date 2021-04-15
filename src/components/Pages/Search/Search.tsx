@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchNews } from "../../../actions";
@@ -13,8 +13,7 @@ const Search = () => {
   const selectNewsCategory = (state: StoreState) => state.newsCategory;
   const selectUserSearchCategory = (state: StoreState) =>
     state.userSearchCategory;
-  const selectIsUserInputSearch = (state: StoreState) =>
-    state.isUserInputSearch;
+  const selectUserInputSearch = (state: StoreState) => state.userInputSearch;
 
   const [selectedNewsTab, setSelectedNewsTab] = useState("general");
   const [selectedSearchTab, setSelectedSearchTab] = useState("top");
@@ -22,7 +21,8 @@ const Search = () => {
   const news = useSelector(selectNewsArticles);
   const focusedNewsTab = useSelector(selectNewsCategory);
   const focusedSearchTab = useSelector(selectUserSearchCategory);
-  const isUserInputSearch = useSelector(selectIsUserInputSearch);
+  const userInputSearch = useSelector(selectUserInputSearch);
+  const isUserInputSearch = Boolean(userInputSearch);
 
   const handleClickNewsFilter: (event: EventTarget) => EventTarget = function (
     event: EventTarget
@@ -53,7 +53,11 @@ const Search = () => {
       >
         <a href={article.url}>
           {idx === 0 ? (
-            <img className="article--featured__img" src={article.urlToImage} />
+            <img
+              loading={"lazy"}
+              className="article--featured__img"
+              src={article.urlToImage}
+            />
           ) : null}
           <div className="article__content">
             <div className="article__publish--meta">

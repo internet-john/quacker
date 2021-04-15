@@ -1,7 +1,6 @@
-import React from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "../Header";
 import AppNav from "../AppNav";

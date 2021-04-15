@@ -1,6 +1,4 @@
-import React from "react";
-import { CgNotes } from "react-icons/cg";
-import { BiListPlus } from "react-icons/bi";
+import { VscNote, MdPlaylistAdd } from "../../../assets/icons";
 
 const Lists = () => {
   const lists = null;
@@ -18,7 +16,7 @@ const Lists = () => {
         <header className="lists--discover__header">Discover new Lists</header>
         <ul className="lists--discover__listings">
           <li className="listitem--discover">
-            <CgNotes className="list__icon" />
+            <VscNote className="list__icon" />
             <div className="list__title">Best kept krabby patty secrets</div>
             <div className="list__author">
               <div className="author__avatar"></div>
@@ -28,7 +26,7 @@ const Lists = () => {
             <button className="list--follow">Follow</button>
           </li>
           <li className="listitem--discover">
-            <CgNotes className="list__icon" />
+            <VscNote className="list__icon" />
             <div className="list__title">Top Plankton Fails</div>
             <div className="list__author">
               <div className="author__avatar"></div>
@@ -38,7 +36,7 @@ const Lists = () => {
             <button className="list--follow">Follow</button>
           </li>
           <li className="listitem--discover">
-            <CgNotes className="list__icon" />
+            <VscNote className="list__icon" />
             <div className="list__title">Gary content ❤️</div>
             <div className="list__author">
               <div className="author__avatar"></div>
@@ -59,7 +57,7 @@ const Lists = () => {
         </div>
       </section>
       <div className="button--createlist">
-        <BiListPlus />
+        <MdPlaylistAdd />
       </div>
     </div>
   );

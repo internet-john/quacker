@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { MdInsertComment } from "react-icons/md";
+import { useState } from "react";
+
+import { MdInsertComment } from "../../../assets/icons";
 
 const topics = [
   { title: "Krabby Patties", subtitle: "Tips, tricks, techniques" },

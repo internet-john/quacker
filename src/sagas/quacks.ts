@@ -1,4 +1,4 @@
-import { takeLatest, put, call } from "redux-saga/effects";
+import { takeLatest, put, call, select } from "redux-saga/effects";
 
 import { ActionType, ACTION_TYPES } from "../actions/types";
 import {
@@ -10,8 +10,11 @@ import { fetchAuthorMeta } from "../utils/fetchAuthorMeta";
 import { AuthorMeta } from "../types";
 
 function* fetchQuacks({ query }) {
+  const nextToken = yield select((state) => state.quacksNextToken);
   const twitterApiClient = new URL(`http://localhost:3000/fetchquacks`);
   if (query) twitterApiClient.searchParams.append("query", query);
+  if (nextToken)
+    twitterApiClient.searchParams.append("pagination_token", nextToken);
 
   const response = yield fetch(twitterApiClient);
   const authorMeta = yield fetchAuthorMeta();
@@ -27,7 +30,7 @@ function* fetchQuacks({ query }) {
       };
     });
     yield put(fetchQuacksSuccess());
-    yield put(displayQuacks(quacks.data));
+    yield put(displayQuacks(quacks));
   } else {
     yield put(fetchQuacksFailure("fail"));
   }
