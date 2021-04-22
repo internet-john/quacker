@@ -16,6 +16,12 @@ const LoadingComponent = () => (
   </div>
 );
 
+/**
+ * TODO:
+ *
+ * SEGMENT TIMELINEFEED AND QUERYFEED
+ */
+
 const Feed = () => {
   const dispatch: Dispatch<ActionType> = useDispatch();
   const selectQuacksData = (state: StoreState) => state.quacks;

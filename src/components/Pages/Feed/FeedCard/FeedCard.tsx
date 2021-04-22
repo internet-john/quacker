@@ -15,18 +15,12 @@ import {
 
 type FeedCardProps = {
   id: string;
-  key: number;
   text: string;
   authorMeta: AuthorMeta;
+  addThreshold: Boolean;
 };
 
-const FeedCard = ({
-  id,
-  key,
-  text,
-  authorMeta,
-  addThreshold,
-}: FeedCardProps) => {
+const FeedCard = ({ id, text, authorMeta, addThreshold }: FeedCardProps) => {
   const dispatch: Dispatch<ActionType> = useDispatch();
   const handleClickToggleOptionsDrawer = () => dispatch(toggleOptionsDrawer());
 
