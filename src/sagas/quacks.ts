@@ -1,4 +1,4 @@
-import { takeLatest, put, call, select } from "redux-saga/effects";
+import { takeLatest, put, all, call, select } from "redux-saga/effects";
 
 import { ActionType, ACTION_TYPES } from "../actions/types";
 import {
@@ -16,8 +16,10 @@ function* fetchQuacks({ query }) {
   if (nextToken)
     twitterApiClient.searchParams.append("pagination_token", nextToken);
 
-  const response = yield fetch(twitterApiClient);
-  const authorMeta = yield fetchAuthorMeta();
+  const [response, authorMeta] = yield all([
+    call(fetch, twitterApiClient),
+    call(fetchAuthorMeta),
+  ]);
 
   const jsonQuacks = yield response.text();
   const quacks = JSON.parse(jsonQuacks);
